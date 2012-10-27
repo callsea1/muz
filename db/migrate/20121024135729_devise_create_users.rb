@@ -35,7 +35,10 @@ class DeviseCreateUsers < ActiveRecord::Migration
 
       t.string :name
       t.string :location
-      t.string :user_tpye
+      t.string :user_type
+      t.string :uid
+      t.string :provider
+      t.string :username
 
       t.timestamps
     end

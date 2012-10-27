@@ -64,4 +64,7 @@ Music::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+  
+  ENV["FACEBOOK_APP_ID"] = "309085772520317"
+  ENV["FACEBOOK_APP_SECRET"] = "b85ee884f017194f293a7be1c7e439be"
 end

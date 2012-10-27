@@ -39,3 +39,7 @@ gem 'jquery-rails'
 
 # user authentication solution
 gem 'devise'
+
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'oauth2'

@@ -34,4 +34,7 @@ Music::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+  
+  ENV["FACEBOOK_APP_ID"] = "309085772520317"
+  ENV["FACEBOOK_APP_SECRET"] = "b85ee884f017194f293a7be1c7e439be"
 end
