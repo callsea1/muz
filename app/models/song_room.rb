@@ -4,4 +4,6 @@ class SongRoom < ActiveRecord::Base
   belongs_to :user 
 
   has_many :collaborators
+
+  has_many :song_room_song_versions
 end
