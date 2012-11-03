@@ -9,6 +9,16 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :provider, :uid
 
   has_attached_file :avatar
+
+  has_many :evaluations, class_name: "RSEvaluation", as: :source
+
+  has_reputation :votes, source: {reputation: :votes, of: :song_room_song_versions }, aggregated_by: :sum
+
+  def voted_for?(song_room_song_version)
+    evaluations.where(target_type: song_room_song_version.class, target_id: song_room_song_version.id).present?
+  end
+
+
   # attr_accessible :title, :body
      # Setup accessible (or protected) attributes for your model
 
@@ -47,4 +57,7 @@ class User < ActiveRecord::Base
       super
     end
   end
+
+
+
 end

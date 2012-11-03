@@ -14,7 +14,7 @@ class SongRoomsController < ApplicationController
   # GET /song_rooms/1.json
   def show
     @song_room = SongRoom.find(params[:id])
-
+    @song_room_song_versions = SongRoomSongVersion.find_with_reputation(:votes, :all, order: "votes desc")
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @song_room }

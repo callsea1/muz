@@ -4,4 +4,6 @@ class SongRoomSongVersion < ActiveRecord::Base
   belongs_to :song_room
 
   has_attached_file :song_version_upload
+
+  has_reputation :votes, source: :user, aggregated_by: :sum
 end

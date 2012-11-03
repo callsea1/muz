@@ -1,5 +1,9 @@
 Music::Application.routes.draw do
 
+  resources :song_room_song_versions do 
+    member { post :vote}
+  end
+
   resources :song_rooms
 
   resources :user_song_uploads

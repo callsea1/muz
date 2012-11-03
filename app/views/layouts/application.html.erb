@@ -7,6 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<%= current_user.reputation_value_for(:votes).to_i %>
 	<p class="notice"><%= notice %></p>
 	       <p class="alert"><%= alert %></p>
 <%= yield %>

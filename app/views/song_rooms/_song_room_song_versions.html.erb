@@ -1,0 +1,5 @@
+| <%= pluralize song_room_song_version.reputation_value_for(:votes).to_i, "vote" %>
+<% if current_user && !current_user.voted_for?(song_room_song_version) %>
+  | <%= link_to "up", vote_song_room_song_version_path(song_room_song_version, type: "up"), method: "post" %>
+  | <%= link_to "down", vote_song_room_song_version_path(song_room_song_version, type: "down"), method: "post" %>
+<% end %>
