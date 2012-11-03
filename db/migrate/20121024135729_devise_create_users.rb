@@ -32,13 +32,18 @@ class DeviseCreateUsers < ActiveRecord::Migration
 
       ## Token authenticatable
       # t.string :authentication_token
-
+      t.string :phone_number
+      t.string :musical_title, :default => "Artist"
+      t.string :music_preference_1
+      t.string :music_preference_2
+      t.string :instrument_1
+      t.string :instrument_2
       t.string :name
       t.string :location
-      t.string :user_type
       t.string :uid
       t.string :provider
       t.string :username
+      t.has_attached_file :avatar
 
       t.timestamps
     end

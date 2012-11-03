@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @song_room.user_id %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @song_room.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_song_room_path(@song_room) %> |
+<%= link_to 'Back', song_rooms_path %>

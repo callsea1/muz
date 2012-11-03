@@ -15,7 +15,35 @@
   <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
   <%= f.password_field :current_password %></div>
 
+  <div><%= f.label :name %><br />
+    <%= f.text_field :name %></div>
+
+  <div><%= f.label :username %><br />
+    <%= f.text_field :username %></div>
+
+    <div><%= f.label :musical_title %><br />
+    <%= f.text_field :musical_title %></div>
+
+    <div><%= f.label :music_preference_1 %><br />
+    <%= f.text_field :music_preference_1 %></div>
+
+    <div><%= f.label :music_preference_2 %><br />
+    <%= f.text_field :music_preference_2 %></div>
+
+    <div><%= f.label :instrument_1 %><br />
+    <%= f.text_field :instrument_1 %></div>
+
+    <div><%= f.label :instrument_2 %><br />
+    <%= f.text_field :instrument_2 %></div>
+
+    <div><%= f.label :location %><br />
+    <%= f.text_field :location %></div>
+
+    <div><%= f.label :avatar %><br />
+    <%= f.file_field :avatar %></div>
+
   <div><%= f.submit "Update" %></div>
+
 <% end %>
 
 <h3>Cancel my account</h3>

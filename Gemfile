@@ -22,6 +22,8 @@ end
 
 gem 'jquery-rails'
 
+gem "paperclip", "~> 3.0"
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -43,3 +45,4 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'oauth2'
+gem "omniauth-37signals", "~> 1.0.4"
