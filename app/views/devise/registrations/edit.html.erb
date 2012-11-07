@@ -6,6 +6,8 @@
   <div><%= f.label :email %><br />
   <%= f.email_field :email %></div>
 
+  <% if f.object.password_required? %>
+
   <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
   <%= f.password_field :password, :autocomplete => "off" %></div>
 
@@ -14,6 +16,8 @@
 
   <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
   <%= f.password_field :current_password %></div>
+
+  <% end %>
 
   <div><%= f.label :name %><br />
     <%= f.text_field :name %></div>

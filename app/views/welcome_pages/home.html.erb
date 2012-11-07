@@ -1,3 +1,26 @@
 <%= @welcome %>
-<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-<%= link_to "Your Profile", current_user_path %>
+
+
+<nav>
+	<ul>
+<li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+<li><%= link_to "Your Profile", user_path(current_user) %></li>
+<li><%= link_to "Create a Song Room", new_song_room_path %></li>
+<li><%= link_to "New Song Upload", new_user_song_upload_path %></li>
+  </ul>
+</nav>
+
+<ul>
+  <% @current_user_song_rooms.each do |song_room| %>
+    <li><%= link_to "#{song_room.title}", song_room_path(song_room) %></li>
+  <% end %>
+</ul>
+
+<ul>
+	<h2>Things To Do:</h2>
+  <li>Upload Song Button</li>
+  <li>List of current song rooms</li>
+  <li>Friends/Suggestions</li>
+  <li>Create Room Button</li>
+
+</ul>
