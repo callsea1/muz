@@ -10,7 +10,7 @@ Music::Application.routes.draw do
 
   get('/home', { :controller => 'WelcomePages', :action => 'home'})
   
-  devise_for :users, :controllers => { :registrations => "registrations", omniauth_callbacks: "omniauth_callbacks" }
+  devise_for :users, :controllers => { :registrations => "registrations", :omniauth_callbacks => "users/omniauth_callbacks" }
   
   resources :users
 
