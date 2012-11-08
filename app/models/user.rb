@@ -6,9 +6,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :name, :username, :password, :password_confirmation, :remember_me, :provider, :uid, :phone_number, :musical_title, :music_preference_1, :music_preference_2, :instrument_1, :instrument_2, :location
-
-  has_attached_file :avatar
+  attr_accessible :email, :name, :first_name, :last_name, :image, :username, :password, :password_confirmation, :remember_me, :provider, :uid, :phone_number, :musical_title, :music_preference_1, :music_preference_2, :instrument_1, :instrument_2, :location
 
   has_many :evaluations, class_name: "RSEvaluation", as: :source
 
@@ -33,6 +31,11 @@ class User < ActiveRecord::Base
         user.uid = auth.uid
         user.username = auth.info.nickname
         user.email = auth.info.email
+        user.name = auth.info.name
+        user.first_name = auth.info.first_name
+        user.last_name = auth.info.last_name
+        user.location = auth.info.location
+        user.image = auth.info.image
       end
     end
 
