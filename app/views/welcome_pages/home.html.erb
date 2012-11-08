@@ -1,5 +1,8 @@
 <%= @welcome %>
 
+<% unless current_user.registration_complete? %>
+ <%= render 'devise/registrations/music_form' %>
+ <% end %>
 
 <nav>
 	<ul>

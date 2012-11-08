@@ -62,6 +62,13 @@ class User < ActiveRecord::Base
     end
   end
 
-
-
+  def registration_complete?
+    if
+      self.music_preference_1.present?
+      self.music_preference_2.present?
+      self.musical_title.present?
+      self.instrument_1.present?
+      self.instrument_2.present?
+    end
+  end
 end
