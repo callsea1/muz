@@ -1,22 +1,27 @@
 <h2>Set Your Music Preferences</h2>
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-	
+  
+  
 	<div><%= f.label :musical_title %>
-		<%= f.text_field :musical_title %>
+		<%= f.select :musical_title, ["artist", "producer", "audio engineer", "singer", "rapper"] %>
 	</div>
-
+ 
+  <% unless current_user.music_preference_1.present? %>
 	<div><%= f.label :music_preference_1 %>
-	  <%= f.text_field :music_preference_1 %></div>
-
+	  <%= f.select :music_preference_1, ["Avant-Garde","Blues","Children's","Classical","Comedy/Spoken","Country","Easy Listening","Electronic","Folk","Holiday","International","Jazz","Latin","New Age","Pop/Rock","R&B","Rap","Reggae","Religious","Stage & Screen","Vocal"] %></div>
+  <% end %>
+  <% unless current_user.music_preference_2.present? %>
 	  <div><%= f.label :music_preference_2 %>
-	  <%= f.text_field :music_preference_2 %></div>
-
+	  <%= f.select :music_preference_2, ["Avant-Garde","Blues","Children's","Classical","Comedy/Spoken","Country","Easy Listening","Electronic","Folk","Holiday","International","Jazz","Latin","New Age","Pop/Rock","R&B","Rap","Reggae","Religious","Stage & Screen","Vocal"] %></div>
+  <% end %>
+   <% unless current_user.instrument_1.present? %>
 	  <div><%= f.label :instrument_1 %>
-	  <%= f.text_field :instrument_1 %></div>
-
+	  <%= f.select :instrument_1, ["Bagpipes","Banjo","Bass drum","Bassoon","Bell","Bongo","Castanets","Cello","Clarinet","Clavichord","Conga drum","Contrabassoon","Cornet","Cymbals","Double bass","Dulcian","Dynamophone","Flute","Flutophone","Glockenspiel","Gongs","Guitar","Harmonica","Harp","Harpsichord","Lute","Mandolin","Maracas","Metallophone","Musical box","Oboe","Ondes-Martenot","Piano","Recorder","Saxophone","Shawm","Snare drum","Steel drum","Tambourine","Theremin","Triangle","Trombone","Trumpet","Tuba","Ukulele","Viola","Violin","Vocal-Alto","Vocal-Baritone","Vocal-Bass","Vocal-Mezzo-soprano","Vocal-Soprano","Vocal-Tenor"] %></div>
+  <% end %>
+  <% unless current_user.instrument_2.present? %>
 	  <div><%= f.label :instrument_2 %>
-	  <%= f.text_field :instrument_2 %></div>
-
+	  <%= f.select :instrument_2, ["Bagpipes","Banjo","Bass drum","Bassoon","Bell","Bongo","Castanets","Cello","Clarinet","Clavichord","Conga drum","Contrabassoon","Cornet","Cymbals","Double bass","Dulcian","Dynamophone","Flute","Flutophone","Glockenspiel","Gongs","Guitar","Harmonica","Harp","Harpsichord","Lute","Mandolin","Maracas","Metallophone","Musical box","Oboe","Ondes-Martenot","Piano","Recorder","Saxophone","Shawm","Snare drum","Steel drum","Tambourine","Theremin","Triangle","Trombone","Trumpet","Tuba","Ukulele","Viola","Violin","Vocal-Alto","Vocal-Baritone","Vocal-Bass","Vocal-Mezzo-soprano","Vocal-Soprano","Vocal-Tenor"] %></div>
+  <% end %>
 	<div><%= f.submit "Update your music profile" %></div>
 
 	<% end %>

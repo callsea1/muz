@@ -1,4 +1,5 @@
 class SongRoomsController < ApplicationController
+  before_filter :authenticate_user!
   # GET /song_rooms
   # GET /song_rooms.json
   def index
@@ -40,7 +41,7 @@ class SongRoomsController < ApplicationController
   # POST /song_rooms
   # POST /song_rooms.json
   def create
-    @song_room = SongRoom.new(params[:song_room])
+    @song_room = current_user.song_room.build(params[:song_room])
 
     respond_to do |format|
       if @song_room.save

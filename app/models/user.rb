@@ -25,6 +25,8 @@ class User < ActiveRecord::Base
       #  message: 'is not correct.'
     #}
 
+
+
     def self.from_omniauth(auth)
       where(auth.slice(:provider, :uid)).first_or_create do |user|
         user.provider = auth.provider
@@ -70,5 +72,10 @@ class User < ActiveRecord::Base
       self.instrument_1.present?
       self.instrument_2.present?
     end
+  end
+
+  def music_preferences 
+    ["Avant-Garde","Blues","Children's","Classical","Comedy/Spoken","Country","Easy Listening","Electronic","Folk","Holiday",
+      "International","Jazz","Latin","New Age","Pop/Rock","R&B","Rap","Reggae","Religious","Stage & Screen","Vocal"]
   end
 end

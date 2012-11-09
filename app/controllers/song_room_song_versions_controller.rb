@@ -1,5 +1,5 @@
 class SongRoomSongVersionsController < ApplicationController
-
+  before_filter :authenticate_user!
   def show
 	@song_room_song_version = SongRoomSongVersion.find_by_id(params[:id])
 	  respond_to do |format|
