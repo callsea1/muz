@@ -33,7 +33,14 @@ class User < ActiveRecord::Base
       #  message: 'is not correct.'
     #}
 
+    include Tire::Model::Search
+    include Tire::Model::Callbacks
 
+    def self.search(params)
+    tire.search do
+        query { string params[:query] } if params[:query].present?
+      end
+    end
 
     def self.from_omniauth(auth)
       where(auth.slice(:provider, :uid)).first_or_create do |user|

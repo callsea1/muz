@@ -7,4 +7,13 @@ class SongRoomSongVersion < ActiveRecord::Base
   has_attached_file :song_version_upload
 
   has_reputation :votes, source: :user, aggregated_by: :sum
+
+  include Tire::Model::Search
+  include Tire::Model::Callbacks
+ 
+  def self.search(params)
+    tire.search(load: true) do
+      query { string params[:query] } if params[:query].present?
+    end
+  end
 end

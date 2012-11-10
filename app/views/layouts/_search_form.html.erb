@@ -1,0 +1,9 @@
+<section id="search-main">
+
+              <%= form_tag searches_path, method: :get, remote: :true, :class => "navbar-search" do %>
+                
+                  <%= text_field_tag :query, params[:query], :placeholder => "Search Artists And Recording Rooms", :class => "input-large search-query" %>
+                
+              <% end %>
+                
+            </section>
