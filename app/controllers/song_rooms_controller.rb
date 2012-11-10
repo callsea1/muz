@@ -15,9 +15,11 @@ class SongRoomsController < ApplicationController
   # GET /song_rooms/1.json
   def show
     @song_room = SongRoom.find(params[:id])
-    @song_room_song_versions = SongRoomSongVersion.find_with_reputation(:votes, :all, order: "votes desc")
-    @collaborator = @song_room.collaborators.build(params[:collaborator])
+    #@song_room_song_versions = SongRoomSongVersion.find_with_reputation(:votes, :all, order: "votes desc")
+    @song_room_song_versions = @song_room.song_room_song_versions.all
+    @create_collaborator = @song_room.collaborators.build(params[:collaborator])
     @collaborators = @song_room.collaborators.all
+    @song_room_song_version = @song_room.song_room_song_versions.build(params[:song_room_song_version])
     @users = User.all
     respond_to do |format|
       format.html # show.html.erb

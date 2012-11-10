@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(:version => 20121110051924) do
 
   create_table "song_room_song_versions", :force => true do |t|
     t.integer  "song_room_id"
-    t.integer  "collaborator_id"
+    t.integer  "user_id"
     t.string   "song_version_upload_file_name"
     t.string   "song_version_upload_content_type"
     t.integer  "song_version_upload_file_size"

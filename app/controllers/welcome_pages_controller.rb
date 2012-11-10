@@ -4,6 +4,6 @@ class WelcomePagesController < ApplicationController
 	def home
 	  @welcome = "Welcome to MusicMind-studio"
       @current_user_song_rooms = current_user.song_rooms.all
-	  @collab_requests = Collaborator.all
+	  @collab_requests = Collaborator.where(:user_id => current_user.id)
 	end
 end

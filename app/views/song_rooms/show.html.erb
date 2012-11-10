@@ -10,7 +10,7 @@
   <%= @song_room.description %>
 </p>
 
-<%= form_for [@song_room, @collaborator] do |f| %>
+<%= form_for [@song_room, @create_collaborator] do |f| %>
   	<%= f.collection_select :user_id, @users, :id, :username %>
 	<%= f.hidden_field :song_room_id %>
 	<%= f.submit "Add Collaborator" %>
@@ -27,4 +27,19 @@
 <%= link_to 'Edit', edit_song_room_path(@song_room) %> |
 <% end %>
 <%= link_to 'Back', :back %>
+
+<%= form_for(@song_room_song_version) do |f| %>
+  <%= f.file_field :song_version_upload %>
+  <%= f.hidden_field :song_room_id %>
+  <%= f.hidden_field :user_id %>
+<%= f.submit "Add Song" %>
+<% end %>
+
+
+<ul>
+<% @song_room_song_versions.each do |song| %>
+  <li><%= song.song_version_upload_file_name %></li>
+  <li><a href="<%= download_path(song) %>">Download</a></li>
+<% end %>
+</ul>
 <%#= link_to 'Add A Collaborator', new_song_room_collaborator_path(@song_room) %>

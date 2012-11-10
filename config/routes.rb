@@ -1,6 +1,7 @@
 Music::Application.routes.draw do
 
 
+  match 'download/:id' =>  'song_room_song_versions#download', :as => :download
 
   resources :song_room_song_versions do 
     member { post :vote}
@@ -13,8 +14,8 @@ Music::Application.routes.draw do
     resources :collaborators
   end
 
-  put('/accept', {:controller => "Requests", :action => 'accept'})
-  put('/deny', {:controller => "Requests", :action => 'deny'})
+  put('/accept/:id', {:controller => "Requests", :action => 'accept', :as => 'accept'})
+  put('/deny/:id', {:controller => "Requests", :action => 'deny', :as => 'deny'})
 
   resources :user_song_uploads
 

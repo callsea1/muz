@@ -5,14 +5,16 @@
  <% end %>
 
  
+
+ ''
    <% @collab_requests.each do |collab_request| %>
-   <% if current_user.id == collab_request.user_id %>
-     <% unless collab_request.accepted.nil? %>
-       <%= link_to "Accept", accept_path(collab_request), :method => 'put' %>
-       <%= link_to "Deny", deny_path(collab_request), :method => 'put' %>
+   <%# if current_user.id == collab_request.user_id %>
+     <% if collab_request.accepted.nil? %>
+       <%= link_to "Accept", "/accept/#{collab_request.id}", :method => 'put' %>
+       <%= link_to "Deny", "/deny/#{collab_request.id}", :method => 'put' %>
      <% end %>
     <% end %>
-   <% end %>
+   <%# end %>
 
 <nav>
 	<ul>
