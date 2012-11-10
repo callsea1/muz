@@ -10,6 +10,10 @@ class User < ActiveRecord::Base
 
   has_many :evaluations, class_name: "RSEvaluation", as: :source
 
+  has_many :song_rooms
+
+  has_many :user_song_uploads
+
   has_reputation :votes, source: {reputation: :votes, of: :song_room_song_versions }, aggregated_by: :sum
 
   def voted_for?(song_room_song_version)

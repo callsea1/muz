@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>User:</b>
-  <%= @song_room.user_id %>
+  <b>Title:</b>
+  <%= @song_room.title %>
 </p>
 
 <p>
@@ -10,6 +10,18 @@
   <%= @song_room.description %>
 </p>
 
+<%= form_for [@song_room, @collaborator] do |f| %>
+  	<%= f.collection_select :user_id, @users, :id, :username %>
+	<%= f.hidden_field :song_room_id %>
+	<%= f.submit "Add Collaborator" %>
+<% end %>
 
+<% @collaborators.each do |collaborator| %>
+  <%= link_to "#{collaborator.user.name}", user_path(collaborator.user.id) %>
+<% end %>
+
+<% if current_user.id = @song_room.user_id %>
 <%= link_to 'Edit', edit_song_room_path(@song_room) %> |
-<%= link_to 'Back', song_rooms_path %>
+<% end %>
+<%= link_to 'Back', :back %>
+<%#= link_to 'Add A Collaborator', new_song_room_collaborator_path(@song_room) %>

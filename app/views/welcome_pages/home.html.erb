@@ -27,3 +27,9 @@
 
 
 </ul>
+
+<ul>
+<% @current_user_song_rooms.each do |song_room| %>
+  <%= link_to "#{song_room.title}", song_room_path(song_room) %>
+<% end %>
+</ul>
