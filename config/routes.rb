@@ -6,9 +6,15 @@ Music::Application.routes.draw do
     member { post :vote}
   end
 
+  
+
+
   resources :song_rooms do 
     resources :collaborators
   end
+
+  put('/accept', {:controller => "Requests", :action => 'accept'})
+  put('/deny', {:controller => "Requests", :action => 'deny'})
 
   resources :user_song_uploads
 

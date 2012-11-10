@@ -16,8 +16,11 @@
 	<%= f.submit "Add Collaborator" %>
 <% end %>
 
+
 <% @collaborators.each do |collaborator| %>
-  <%= link_to "#{collaborator.user.name}", user_path(collaborator.user.id) %>
+  <% if collaborator.accepted? %>
+	  <%= link_to "#{collaborator.user.name}", user_path(collaborator.user.id) %>
+  <% end %>
 <% end %>
 
 <% if current_user.id = @song_room.user_id %>

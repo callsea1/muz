@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
 
   has_many :user_song_uploads
 
+  has_many :collaborators
+
   has_reputation :votes, source: {reputation: :votes, of: :song_room_song_versions }, aggregated_by: :sum
 
   def voted_for?(song_room_song_version)

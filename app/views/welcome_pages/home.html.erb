@@ -4,6 +4,16 @@
  <%= render 'devise/registrations/music_form' %>
  <% end %>
 
+ 
+   <% @collab_requests.each do |collab_request| %>
+   <% if current_user.id == collab_request.user_id %>
+     <% unless collab_request.accepted.nil? %>
+       <%= link_to "Accept", accept_path(collab_request), :method => 'put' %>
+       <%= link_to "Deny", deny_path(collab_request), :method => 'put' %>
+     <% end %>
+    <% end %>
+   <% end %>
+
 <nav>
 	<ul>
 <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
