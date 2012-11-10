@@ -75,14 +75,6 @@ ActiveRecord::Schema.define(:version => 20121103091918) do
     t.datetime "updated_at",                       :null => false
   end
 
-  create_table "song_rooms", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "title"
-    t.string   "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
   create_table "user_song_uploads", :force => true do |t|
     t.string   "user_id"
     t.string   "song_file_name"

@@ -4,6 +4,7 @@ class CreateSongRooms < ActiveRecord::Migration
       t.integer :user_id
       t.string :title
       t.string :description
+      t.string :public_or_private
 
       t.timestamps
     end

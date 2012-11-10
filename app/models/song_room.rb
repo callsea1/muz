@@ -1,5 +1,5 @@
 class SongRoom < ActiveRecord::Base
-  attr_accessible :description, :user_id, :title
+  attr_accessible :description, :user_id, :title, :public_or_private
 
   belongs_to :user 
 
