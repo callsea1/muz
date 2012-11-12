@@ -11,6 +11,7 @@
     </div>
   <% end %>
 
+
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>
@@ -20,6 +21,12 @@
     <%= f.label :description %><br />
     <%= f.text_field :description %>
   </div>
+
+  <div class="field">
+    <%= f.label :public_or_private %><br />
+    <%= f.select :public_or_private, ["public", "private"]%>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
