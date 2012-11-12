@@ -1,0 +1,17 @@
+
+
+<h1><%= @song_room_song_version.song_version_upload_file_name %></h1>
+
+<section>
+<% @comments.each do |comment| %>
+    <p><%= comment.body %></p>
+  <% end %>
+</section>
+
+<section>
+  <%= form_for(@comment) do |f| %>
+    <%= f.text_field :body %>
+    <%= f.hidden_field :song_room_song_version_id %>
+    <%= f.submit "Add Comment" %>
+  <% end %>
+</section>

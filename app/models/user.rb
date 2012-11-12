@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
 
   has_many :evaluations, class_name: "RSEvaluation", as: :source
 
+  has_many :comments
+
   has_many :song_rooms
 
   has_many :user_song_uploads

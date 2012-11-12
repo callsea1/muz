@@ -2,6 +2,8 @@ class SongRoomSongVersionsController < ApplicationController
   before_filter :authenticate_user!
   def show
 	@song_room_song_version = SongRoomSongVersion.find_by_id(params[:id])
+  @comments = @song_room_song_version.comments.all
+  @comment = @song_room_song_version.comments.build(params[:comment])
 	  respond_to do |format|
         format.html # show.html.erb
         format.json { render json: @song }

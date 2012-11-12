@@ -38,7 +38,7 @@
 
 <ul>
 <% @song_room_song_versions.each do |song| %>
-  <li><%= song.song_version_upload_file_name %></li>
+  <li><%= link_to "#{song.song_version_upload_file_name}", song_room_song_version_path(song) %></li>
   <li><a href="<%= download_path(song) %>">Download</a></li>
 <% end %>
 </ul>

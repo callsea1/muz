@@ -1,14 +1,13 @@
 Music::Application.routes.draw do
 
 
+  resources :comments
+
   match 'download/:id' =>  'song_room_song_versions#download', :as => :download
 
   resources :song_room_song_versions do 
     member { post :vote}
   end
-
-  
-
 
   resources :song_rooms do 
     resources :collaborators
