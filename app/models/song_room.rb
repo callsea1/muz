@@ -6,4 +6,13 @@ class SongRoom < ActiveRecord::Base
   has_many :collaborators
 
   has_many :song_room_song_versions
+
+  include Tire::Model::Search
+  include Tire::Model::Callbacks
+ 
+  def self.search(params)
+    tire.search(load: true) do
+      query { string params[:query] } if params[:query].present?
+    end
+  end
 end
