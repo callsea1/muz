@@ -3,6 +3,8 @@ Music::Application.routes.draw do
 
   resources :comments
 
+  resources :searches
+
   match 'download/:id' =>  'song_room_song_versions#download', :as => :download
 
   resources :song_room_song_versions do 
