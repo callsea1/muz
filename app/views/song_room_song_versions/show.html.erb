@@ -5,7 +5,7 @@
 <section>
 <% @comments.each do |comment| %>
     <p><%= comment.body %></p>
-    <p><%= time_ago_in_words(comment) %></p>
+    <p><%= time_ago_in_words(comment.created_at) %></p>
   <% end %>
 </section>
 
