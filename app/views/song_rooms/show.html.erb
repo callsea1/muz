@@ -1,14 +1,39 @@
+<header class="main_menu clearfix">
+  <a href="index.html" title="Back to homepage">
+    <!-- <img src="logo.png" alt="Logo" class="logo fleft" /> -->
+    <%= image_tag "logo.png", :class => "logo fleft" %>
+  </a>
+  <div id="room_info" class="fleft">
+    <h1 class="room_title"><%= @song_room.title %></h1>
+    <p class="room_tags"><%= @song_room.description %></p>
+  </div>
+  <div class="user">
+      <img src="img/pic2.png" />
+      <h5><%= current_user.name %></h5>
+      <ul>
+        <li><%= link_to "View Profile", user_path(current_user) %></li>
+        <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+        <li class="sep">Joined: March 9, 2012</li>
+      </ul>
+  </div>
+  <nav class="room_nav fright">
+    <ul class="dinline">
+      <li class="fleft mright">
+        
+      </li>
+      <li class="fleft mmiddle mright mleft pleft"><a href="#" class="icon-pq-settings" title="Room eettings">Settings</a></li>
+      <li class="fleft mmiddle mright mleft pleft"><a href="#" class="icon-pq-exit" title="Leave the room">Exit</a></li>      
+    </ul>
+    
+  </nav>
+</header>
+
+
+
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Title:</b>
-  <%= @song_room.title %>
-</p>
 
-<p>
-  <b>Description:</b>
-  <%= @song_room.description %>
-</p>
 
 <%= form_for [@song_room, @create_collaborator] do |f| %>
   	<%= f.collection_select :user_id, @users, :id, :username %>
@@ -44,3 +69,11 @@
 <% end %>
 </ul>
 <%#= link_to 'Add A Collaborator', new_song_room_collaborator_path(@song_room) %>
+
+
+
+
+
+<% if user_signed_in? %>
+	     <%= render 'layouts/search_form' %>
+        <% end %>
