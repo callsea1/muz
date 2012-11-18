@@ -11,12 +11,15 @@ Music::Application.routes.draw do
     member { post :vote}
   end
 
+  delete('song_rooms/:id/collaborators/:id', { :controller => "Collaborators", :action => 'destroy', :as => 'delete_collaborator'})
+
   resources :song_rooms do 
     resources :collaborators
   end
 
   put('/accept/:id', {:controller => "Requests", :action => 'accept', :as => 'accept'})
   put('/deny/:id', {:controller => "Requests", :action => 'deny', :as => 'deny'})
+  
 
   resources :user_song_uploads
 

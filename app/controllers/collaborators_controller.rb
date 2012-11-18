@@ -23,5 +23,15 @@ class CollaboratorsController < ApplicationController
 	      end
       end
 	end
+	
+	def destroy
+    @collaborator = Collaborator.find(params[:id])
+    @collaborator.destroy
+
+    respond_to do |format|
+      format.html { redirect_to song_room_path(@collaborator.song_room_id), notice: "Collaborator deleted" }
+      format.json { head :no_content }
+    end
+  end
 
 end

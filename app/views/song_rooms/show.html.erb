@@ -101,12 +101,17 @@
 				<ul class="sub-menu">
 				  <% @collaborators.each do |collaborator| %>
             <li>
-              <% if collaborator.accepted? %>
-                <%= link_to "#{collaborator.user.name}", user_path(collaborator.user.id) %>
-              <% end %>
+              <%# if collaborator.accepted? %>
+                <%#= link_to "#{collaborator.user.name}", user_path(collaborator.user.id) %>
+              <%# end %>
               <a href="#">
-                <em><img src="img/pic4.png"></em>John Malcon<span>Guitar</span>
+                <em><%= image_tag(collaborator.user.image) %></em>
+                <%= collaborator.user.name %>
+                <span><%= collaborator.user.instrument_1 %></span>
               </a>
+              <div class="bt_del">
+                <%= link_to 'Destroy', delete_collaborator_path(@song_room, collaborator), method: :delete, data: { confirm: 'Are you sure?' } %>
+              </div>
             </li>
           <% end %>
             <li class="search_box">
