@@ -64,14 +64,7 @@
         					<div class="jp-time-holder">
         						<div class="jp-current-time"></div>
         						<div class="jp-duration"></div>
-        					</div>
-        					<!--
-<a href="<%= download_path(song) %>" class="jp-download">
-        					 <div class="jp-download"></div>
-        					</a>
--->
-        				   <%= link_to "Download", download_path(song), :class => "jp-download" %> 
-
+        					</div>		   
         				</div>
         				<div class="jp-no-solution">
         					<span>Update Required</span>
@@ -79,7 +72,7 @@
         				</div>
         			</div>
         		</div>
-
+        		<%= link_to "Download", download_path(song), :class => "jp-download" %> 
   				</div>
 				</li>
 		  <% end %>
@@ -140,7 +133,7 @@
     	$("#jquery_jplayer_<%= song.id%>").jPlayer({
     		ready: function () {
     			$(this).jPlayer("setMedia", {
-    				mp3: "<%= download_url(song) %>"
+    				mp3: "<%= song.song_version_upload.url %>"
     			});
     		},
     		play: function() { // To avoid both jPlayers playing together.
