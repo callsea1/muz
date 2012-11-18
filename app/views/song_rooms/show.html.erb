@@ -65,13 +65,6 @@
         						<div class="jp-current-time"></div>
         						<div class="jp-duration"></div>
         					</div>
-        					<!--
-<a href="<%= download_path(song) %>" class="jp-download">
-        					 <div class="jp-download"></div>
-        					</a>
--->
-        				   <%= link_to "Download", download_path(song), :class => "jp-download" %> 
-
         				</div>
         				<div class="jp-no-solution">
         					<span>Update Required</span>
@@ -79,7 +72,7 @@
         				</div>
         			</div>
         		</div>
-
+        		<%= link_to "Download", download_path(song), :class => "jp-download" %> 
   				</div>
 				</li>
 		  <% end %>
@@ -112,7 +105,7 @@
                 <%= link_to "#{collaborator.user.name}", user_path(collaborator.user.id) %>
               <% end %>
               <a href="#">
-                <em><img src="img/pic4.png"></em>John Malcon<span>Guitar</span>
+                <em><img src="<%= collaborator.user.name %>" alt="<%= collaborator.user.name %>"></em><%= collaborator.user.name %><span><%= collaborator.user.instrument_1 %></span>
               </a>
             </li>
           <% end %>
