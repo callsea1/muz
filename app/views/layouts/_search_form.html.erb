@@ -1,9 +1,4 @@
-<section id="search-main">
-
-              <%= form_tag searches_path, method: :get, :class => "navbar-search" do %>
-                
-                  <%= text_field_tag :query, params[:query], :placeholder => "Search Artists And Recording Rooms", :class => "input-large search-query" %>
-                <%= submit_tag "Submit" %>
-              <% end %>
-                
-            </section>
+<%= form_tag searches_path, method: :get, :class => "navbar-search" do %>
+  <%= text_field_tag :query, params[:query], :placeholder => "Search Artists And Recording Rooms", :class => "search" %>
+  <%= submit_tag "Submit", class: "dhide" %>
+<% end %>
