@@ -7,6 +7,8 @@ class SongRoomSongVersion < ActiveRecord::Base
   has_many :comments
 
   has_attached_file :song_version_upload
+  validates :song_version_upload, :attachment_presence => true
+  validates_with AttachmentPresenceValidator, :attributes => :song_version_upload
 
   has_reputation :votes, source: :user, aggregated_by: :sum
 

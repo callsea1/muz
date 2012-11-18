@@ -15,7 +15,7 @@ class SongRoomSongVersionsController < ApplicationController
 
   	if @song_room_song_version.save
   		respond_to do |format|
-  			format.html { redirect_to home_path }
+  			format.html { redirect_to song_room_path(@song_room_song_version.song_room) }
   		end
   	end
   end
