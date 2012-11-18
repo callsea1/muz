@@ -188,7 +188,7 @@ input, label, textarea {
   display: block;
   width: 20px;
   height: 20px;
-  background-image: url("../img/icons.png");
+  background-image: url("icons.png");
   background-repeat: no-repeat;
   background-color: transparent;
   border: 0;
@@ -250,7 +250,7 @@ input, label, textarea {
   position: absolute;
   top: 50%;
   left: 50%;
-  background: url("../img/icons.png") no-repeat -80px 0;
+  background: url("icons.png") no-repeat -80px 0;
   color: transparent;
   text-transform: uppercase;
 }
@@ -292,13 +292,13 @@ input, label, textarea {
   background: #f0f0f0;
 }
 .tabs .active .a i, .tabs .a:active i {
-  background-image: url("../img/icons_active.png");
+  background-image: url("icons_active.png");
 }
 .tabs:active .active .a:not(:active) {
   background: none;
 }
 .tabs:active .active .a:not(:active) i {
-  background-image: url("../img/icons.png");
+  background-image: url("icons.png");
 }
 
 .main {
@@ -429,7 +429,7 @@ input, label, textarea {
 	position: absolute;
 	top: 30px;
 	right: 210px;
-	width: auto;
+	min-width: 150px;
 	height: 32px;
 	padding: 0 0 10px 8px;
 	display: inline-block;
@@ -692,7 +692,7 @@ input, label, textarea {
 	margin: 4px 8px;
 
 	background-repeat: no-repeat;
-	background-image: url(../img/icons.png);
+	background-image: url(icons.png);
 	background-position: 0px 0px;
 }
 
@@ -803,7 +803,7 @@ input, label, textarea {
   display: block;
   margin: 10px auto;
   padding: 3px 5px 3px 25px;
-  background: #fff url(../img/icons.png) no-repeat -36px -21px;
+  background: #fff url(icons.png) no-repeat -36px -21px;
   border: 1px solid #dadada;
   outline: none;
   border-radius: 4px;

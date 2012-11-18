@@ -12,22 +12,16 @@
   <% end %>
 
 
-  <div class="field">
-    <%= f.label :title %><br />
+    <%= f.label :title %>
     <%= f.text_field :title %>
-  </div>
 
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </div>
-
-  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  <!--
+<div class="field">
     <%= f.label :public_or_private %><br />
     <%= f.select :public_or_private, ["public", "private"]%>
   </div>
-
-  <div class="actions">
+-->
     <%= f.submit %>
-  </div>
 <% end %>
