@@ -1,0 +1,12 @@
+<% @search_users_for_collaborations.each do |user| %>
+            <li>
+              <%# if collaborator.accepted? %>
+                <%#= link_to "#{collaborator.user.name}", user_path(collaborator.user.id) %>
+              <%# end %>
+              <a href="#">
+                <em><%= image_tag(user.image) %></em>
+                <%= user.name %>
+                <span><%= user.instrument_1 %></span>
+              </a>
+            </li>
+        <% end %>

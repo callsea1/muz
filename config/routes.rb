@@ -3,6 +3,8 @@ Music::Application.routes.draw do
 
   resources :comments
 
+  get('/song_room_search_collaborators', { :controller => "SongRooms", :action => 'song_room_search_collaborators', :as => 'search_collaborators'})
+
   resources :searches
 
   match 'download/:id' =>  'song_room_song_versions#download', :as => :download

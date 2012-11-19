@@ -92,4 +92,14 @@ class SongRoomsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def song_room_search_collaborators
+      if params[:query].present?
+      @search_users_for_collaborations = User.search(params)
+      end
+      respond_to do |format|
+        format.html
+      format.js {render :layout => false }
+    end
+  end
 end
