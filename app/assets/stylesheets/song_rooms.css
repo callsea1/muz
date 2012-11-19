@@ -817,3 +817,28 @@ input, label, textarea {
 	-moz-box-shadow: none !important;
 	box-shadow: none !important;
 }
+
+.bt_add {
+  position: absolute !important;
+  z-index: 20 !important;
+  display: inline-block !important;
+  float: right;
+  width: 12px !important;
+  height: 12px !important;
+  padding: 0 !important;
+  margin-top: -22px;
+  right: 8px;
+}
+.bt_add a {
+  display: inline-block !important;
+  float: right;
+  width: 12px !important;
+  height: 12px !important;
+  padding: 0 !important;
+  text-indent: -99999px !important;
+  background:url(icons.png) no-repeat -2px -42px !important;
+  border: none !important;
+  -webkit-box-shadow: none !important;
+	-moz-box-shadow: none !important;
+	box-shadow: none !important;
+}
