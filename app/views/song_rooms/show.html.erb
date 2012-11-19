@@ -8,12 +8,16 @@
     <p class="room_tags"><%= @song_room.description %></p>
   </div>
   <div class="user">
-      <img src="" />
+    <% if current_user.provider.present? %>
+      <img src="<%= current_user.image %>" />
+    <% else %>
+      <%= image_tag(current_user.image) %>
+    <% end %>
       <h5><%= current_user.name %></h5>
       <ul>
         <li><%= link_to "View Profile", "/users/edit" %></li>
         <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
-        <li class="sep">Joined: March 9, 2012</li>
+        <li class="sep">Joined: <%= time_ago_in_words(current_user.created_at) %> ago.</li>
       </ul>
   </div>
   <nav class="room_nav fright">
@@ -48,7 +52,7 @@
         			<div class="jp-type-single">
         			 <div class="jp-title">
         					<ul>
-        						<li><strong>Silvia Rivera:</strong> New Beat</li>
+        						<li><strong><%= song.user.name %></strong><%= song.id %></li>
         					</ul>
         				</div>
         				<div class="jp-gui jp-interface">
@@ -131,9 +135,6 @@
     </ul>
   </section>
 </section>
-
-
-<p id="notice"><%= notice %></p>
 
 
 
