@@ -5,20 +5,13 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <%= yield :head %>
 </head>
 <body>
-  <!--div>
-    <%= link_to "Home", root_url %> | 
-    <% if user_signed_in? %>
-      <%= link_to "Profile", user_path(current_user) %> | 
-      <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-    <% end %>
-  </div-->
-	<p class="notice"><%#= notice %></p>
-	       <p class="alert"><%#= alert %></p>
+<p class="notice"><%#= notice %></p>
+<p class="alert"><%#= alert %></p>
 	    
-        
-        <%= yield %>
+<%= yield %>
 
 </body>
 </html>

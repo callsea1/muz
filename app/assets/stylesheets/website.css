@@ -1,0 +1,68 @@
+/* ========================================================
+   HEADER
+   ===================================================== */
+#main_nav {
+  margin-top: 50px;
+}
+#main_nav ul li a {
+  padding: 28px 10px 0;
+  color: #dadada;
+  font-size: .7em;
+  text-transform: uppercase;
+}
+
+[class*="icon-menu-"] {
+  /* display: block; */
+  width: 30px;
+  height: 20px;
+  background-image: url("icons-menu.png");
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border: 0;
+  color: transparent;
+  /* font: 0/0 a; */
+  text-shadow: none;
+}
+.icon-menu-artists {
+  background-position: 20px -120px;
+}
+.icon-menu-rooms {
+  background-position: 15px -160px;
+}
+.icon-menu-songs {
+  background-position: 15px 0;
+}
+.icon-menu-tracks {
+  background-position: 17px -40px;
+}
+.icon-menu-search {
+  background-position: 15px -80px;
+}
+/* ========================================================
+   BODY - MAIN PAGES
+   ===================================================== */
+.light_grey {
+  background: #f9f9f9;
+}
+.white {
+  background: white;
+}
+/* ========================================================
+   PROFILE
+   ===================================================== */
+#main_profile_box {
+  min-height: 160px;
+  margin: 20px auto;
+  border: 1px solid;
+  border-color: #f0f0f0 #dadada #dadada;
+  border-radius: 6px;
+}
+.profile_img_big {
+  border-radius: 6px 0 0 6px;
+}
+
+#main_profile_box h1 {
+  margin: 20px 10px 10px;
+  text-transform: uppercase;
+  font-size: 1.5em;
+}

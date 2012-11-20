@@ -1,5 +1,8 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'song_rooms' %>
+<% end %>
 <header class="main_menu clearfix">
-  <a href="index.html" title="Back to homepage">
+  <a href="/" title="Back to homepage">
     <!-- <img src="logo.png" alt="Logo" class="logo fleft" /> -->
     <%= image_tag "logo.png", :class => "logo fleft" %>
   </a>
@@ -15,8 +18,9 @@
     <% end %>
       <h5><%= current_user.name %></h5>
       <ul>
-        <li><%= link_to "View Profile", "/users/edit" %></li>
-        <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+        <li><%= link_to "View Profile", user_path(current_user) %></li>
+        <li><%= link_to "Edit Profile", "/users/edit" %></li>
+        <li><%= link_to "Sign out", destroy_user_session_path(), :method => :delete %></li>
         <li class="sep">Joined: <%= time_ago_in_words(current_user.created_at) %> ago.</li>
       </ul>
   </div>
