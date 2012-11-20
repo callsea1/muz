@@ -2,7 +2,7 @@
   <%= stylesheet_link_tag 'website' %>
 <% end %>
 <header class="main_header">
-  <div class="container_960 clearfix">
+  <div class="container_1140 clearfix">
     <a href="/" title="Back to homepage">
       <%= image_tag "logo.png", :class => "logo fleft" %>
     </a>
@@ -43,13 +43,26 @@
     <article class="mleft">
       <h1><%= current_user.name %></h1>
       <h2><%= current_user.location %></h2>
+      <footer class="interact_user">
+        <a href="#" class="love_icon">
+          <span class="icon-menu-like">Love this!</span>
+          <span class="love_counter">5</span>
+        </a>
+        <a href="#" class="send_message">
+          <span class="icon-menu-message">Let's talk</span>
+          <span>Send Message</span>
+        </a>
+      </footer>
+    </article>
+    <aside class="user_info fright">
       <h3>Instruments:</h3>
       <p><%= current_user.instrument_1 %>, <%= current_user.instrument_2 %></p>
-    </article>
+    </aside>
   </div>
 </section>
-  
-  
+
+
+
   
   <ul>
   <li><%= link_to "New Song Upload", new_user_song_upload_path %></li>

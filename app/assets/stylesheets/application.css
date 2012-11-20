@@ -62,8 +62,13 @@ input, label, textarea {
   width: 100%;
   margin: 0 auto;
 }
-.container_960 {
+.container_1140 {
   width: 95%;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+.container_960 {
+  width: 90%;
   max-width: 960px;
   margin: 0 auto;
 }

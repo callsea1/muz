@@ -2,10 +2,10 @@
    HEADER
    ===================================================== */
 #main_nav {
-  margin-top: 50px;
+  margin-top: 55px;
 }
 #main_nav ul li a {
-  padding: 28px 10px 0;
+  padding: 25px 10px 0;
   color: #dadada;
   font-size: .7em;
   text-transform: uppercase;
@@ -24,19 +24,25 @@
   text-shadow: none;
 }
 .icon-menu-artists {
-  background-position: 20px -120px;
+  background-position: 16px -120px;
 }
 .icon-menu-rooms {
-  background-position: 15px -160px;
+  background-position: 12px -160px;
 }
 .icon-menu-songs {
-  background-position: 15px 0;
+  background-position: 12px 0;
 }
 .icon-menu-tracks {
-  background-position: 17px -40px;
+  background-position: 14px -40px;
 }
 .icon-menu-search {
-  background-position: 15px -80px;
+  background-position: 12px -80px;
+}
+.icon-menu-like {
+  background-position: 12px -200px;
+}
+.icon-menu-message {
+  background-position: 12px -239px;
 }
 /* ========================================================
    BODY - MAIN PAGES
@@ -51,6 +57,7 @@
    PROFILE
    ===================================================== */
 #main_profile_box {
+  position: relative;
   min-height: 160px;
   margin: 20px auto;
   border: 1px solid;
@@ -65,4 +72,24 @@
   margin: 20px 10px 10px;
   text-transform: uppercase;
   font-size: 1.5em;
+}
+.interact_user {
+  position: absolute;
+  left: 175px;
+  bottom: 0;
+  padding: 3px 5px;
+  background: #f0f0f0;
+  border: 1px solid #d0d0d0;
+  border-bottom: none;
+  border-radius: 4px 4px 0 0;
+  font-size: .7em;
+}
+.love_icon {
+  padding: 3px 5px;
+  border-right: 1px solid #c0c0c0;
+  
+}
+
+.user_info {
+  width: 360px;
 }
