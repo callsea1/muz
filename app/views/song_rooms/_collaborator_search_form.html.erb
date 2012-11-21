@@ -1,4 +1,4 @@
 <%= form_tag search_collaborators_path, method: :get, remote: :true do %>
-  <%= text_field_tag :query, params[:query], :placeholder => "Search Collaborators", :class => "search_box" %>
+  <%= text_field_tag :query, params[:query], :placeholder => "Search Collaborators", :class => "search" %>
   <%= submit_tag "Submit", class: "dhide", remote: :true %>
 <% end %>
