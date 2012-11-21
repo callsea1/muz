@@ -49,7 +49,7 @@
     <ul class="tabs">
       <% @song_room_song_versions.each do |song| %>
       
-				<li class="active">
+				<li>
   				<div class="a">
   				  <div id="jquery_jplayer_<%= song.id%>" class="jp-jplayer"></div>
             <div id="jp_container_<%= song.id%>" class="jp-audio">
@@ -162,6 +162,13 @@
     		cssSelectorAncestor: "#jp_container_<%= song.id%>"
     	});
     <% end %>
+    
+    $('ul.tabs li').first().addClass('active');
+    /*
+$('li .a .jp-audio:hover').mouseover(function() {
+      $(this).first('jp-download').css('opacity' , 1);
+    }
+*/
     	
   	// TEXTAREA FOCUS //
   	$('textarea').focus(function() {

@@ -8,7 +8,7 @@
 	font-family: 'Titillium Web', Verdana, sans-serif;
 }
 
-li .a .jp-audio {
+li .a .jp-audio, .jp-download {
 	opacity: .1;
 	background: #f0f0f0;
 /*
@@ -23,11 +23,11 @@ li .a .jp-audio {
   transition: opacity 0.5s;
 }
 
-li.active .a .jp-audio {
+li.active .a .jp-audio, li.active .jp-download {
 	opacity: 1;
 }
 
-li .a .jp-audio:hover {
+li .a .jp-audio:hover, .jp-download:hover {
   opacity: .9;
   background: #eee;
 }
