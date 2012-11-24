@@ -12,6 +12,8 @@ class CollaboratorsController < ApplicationController
 
 	def create
 	  @collaborator = Collaborator.new(params[:collaborator])
+	  @collaborator.song_room_id = params[:song_room_id]
+	  @collaborator.user_id = params[:user_id]
 
 	  respond_to do |format|
 	      if @collaborator.save

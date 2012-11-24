@@ -1,1 +1,1 @@
-$("li#3").html("<%= escape_javascript(render('song_rooms/collaborator_search_results'))%>")
+$("li#3").html("<%=j render partial: 'song_rooms/collaborator_search_results', locals: { song_room: @song_room } %>")

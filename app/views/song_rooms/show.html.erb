@@ -122,21 +122,15 @@
               </div>
             </li>
           <% end %>
+
             <li class="search_box">
                 <%= render 'collaborator_search_form' %>
             </li>
+
             <li id="3">
               <% if @search_users_for_collaborations %>
-                <%= render 'collaborator_search_results' %>
-              <% end %>
-            </li>
-            <li>
-              <a href="#">
-                <em><img src="img/pic2.png"></em>Roberto Simoes<span>Bass</span>
-              </a>
-              <div class="bt_add">
-                <a href="#add">Hey</a>
-              </div>
+                <%= render partial: 'song_rooms/collaborator_search_results', locals: { song_room: @song_room } %>
+            <% end %>
             </li>
 				</ul>
     </ul>

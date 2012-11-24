@@ -12,7 +12,8 @@ Music::Application.routes.draw do
   resources :song_room_song_versions do 
     member { post :vote}
   end
-
+  
+  post('/collaborators', {:controller => "Collaborators", :action => 'create', :as => 'create_collaborator'})
   delete('song_rooms/:id/collaborators/:id', { :controller => "Collaborators", :action => 'destroy', :as => 'delete_collaborator'})
 
   resources :song_rooms do 

@@ -1,12 +1,15 @@
 <% @search_users_for_collaborations.each do |user| %>
-            <li>
+              
+              <li>
               <%# if collaborator.accepted? %>
                 <%#= link_to "#{collaborator.user.name}", user_path(collaborator.user.id) %>
               <%# end %>
               <a href="#">
                 <em><%= image_tag(user.image) %></em>
-                <%= user.name %>
+                  <%= user.name %>
                 <span><%= user.instrument_1 %></span>
+                <%= link_to 'Add Collaborator', create_collaborator_path(:user_id => user.id, :song_room => song_room), :method => 'post' %>
               </a>
+              
             </li>
-        <% end %>
+            <% end %>
