@@ -22,8 +22,7 @@ class SongRoomsController < ApplicationController
     else
       @song_room_song_versions = @song_room.song_room_song_versions.all
     end
-    
-    @create_collaborator = @song_room.collaborators.build(params[:collaborator])
+  
     @collaborators = @song_room.collaborators.all
     @song_room_song_version = @song_room.song_room_song_versions.build(params[:song_room_song_version])
     @users = User.all
@@ -94,6 +93,7 @@ class SongRoomsController < ApplicationController
   end
 
   def song_room_search_collaborators
+      @song_room = params[:song_room_id]
       if params[:query].present?
       @search_users_for_collaborations = User.search(params)
       end
