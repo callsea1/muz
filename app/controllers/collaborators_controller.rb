@@ -11,10 +11,10 @@ class CollaboratorsController < ApplicationController
 	end
 
 	def create
-	  @collaborator = Collaborator.new(params[:collaborator])
+	  @collaborator = Collaborator.new
 	  @collaborator.song_room_id = params[:song_room_id]
 	  @collaborator.user_id = params[:user_id]
-
+      @collaborator.save
 	  respond_to do |format|
 	      if @collaborator.save
 	        format.html { redirect_to song_room_path(@collaborator.song_room_id), notice: 'Collaborator was successfully added.' }

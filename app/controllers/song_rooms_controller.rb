@@ -93,7 +93,7 @@ class SongRoomsController < ApplicationController
   end
 
   def song_room_search_collaborators
-      
+      @song_room = params[:song_room_id]
       if params[:query].present?
       @search_users_for_collaborations = User.search(params)
       end

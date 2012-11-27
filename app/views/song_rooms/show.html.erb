@@ -81,6 +81,7 @@
         			</div>
         		</div>
         		<%= link_to "Download", download_path(song), :class => "jp-download" %> 
+
   				</div>
 				</li>
 		  <% end %>
@@ -124,12 +125,16 @@
           <% end %>
 
             <li class="search_box">
-                <%= render 'collaborator_search_form' %>
+                <%= form_tag search_collaborators_path, method: :get, remote: :true do %>
+  <%= text_field_tag :query, params[:query], :placeholder => "Search Collaborators", :class => "search_box"  %>
+  <%= hidden_field_tag :song_room_id, @song_room.id %>
+  <%= submit_tag "Submit", class: "dhide", remote: :true  %>
+<% end %>
             </li>
 
             <li id="3">
               <% if @search_users_for_collaborations %>
-                <%= render partial: 'song_rooms/collaborator_search_results', locals: { song_room: @song_room } %>
+                <%= render 'song_rooms/collaborator_search_results'  %>
             <% end %>
             </li>
 				</ul>
