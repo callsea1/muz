@@ -1,0 +1,11 @@
+<div id="fast-chat">
+	<% if @comments %>
+  <% @comments.each do |comment| %>
+    <%= comment.body %>
+  <% end %>
+<% else %>
+  <% @song_comments.each do |comment| %>
+    <%= comment.body %>
+  <% end %>
+<% end %>
+</div>
