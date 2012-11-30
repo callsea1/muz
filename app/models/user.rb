@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  attr_accessible :email, :name, :first_name, :last_name, :image, :username, :password, :password_confirmation, :remember_me, :provider, :uid, :phone_number, :musical_title, :music_preference_1, :music_preference_2, :instrument_1, :instrument_2, :location
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -6,7 +7,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :name, :first_name, :last_name, :image, :username, :password, :password_confirmation, :remember_me, :provider, :uid, :phone_number, :musical_title, :music_preference_1, :music_preference_2, :instrument_1, :instrument_2, :location
+  
 
   has_many :evaluations, class_name: "RSEvaluation", as: :source
 

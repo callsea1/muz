@@ -16,19 +16,14 @@ class SongRoomsController < ApplicationController
   def show
     @song_room = SongRoom.find(params[:id])
     #@song_room_song_versions = SongRoomSongVersion.find_with_reputation(:votes, :all, order: "votes desc")
-    
-    if params[:query].present?
-      @song_room_song_versions = @song_room.song_room_song_versions.search(params)
-    else
-      @song_room_song_versions = @song_room.song_room_song_versions.all
-    end
-    
-    @create_collaborator = @song_room.collaborators.build(params[:collaborator])
-    @collaborators = @song_room.collaborators.all
-    @song_room_song_version = @song_room.song_room_song_versions.build(params[:song_room_song_version])
+    @song_room_song_versions = @song_room.song_room_song_versions.all
+    @comments = @song_room_song_versions.first.comments
+    @collaborators = @song_room.collaborators.where(:accepted => true)
+    @new_song_room_song_version = @song_room.song_room_song_versions.build(params[:song_room_song_version])
     @users = User.all
     respond_to do |format|
       format.html # show.html.erb
+      format.js {render :layout => false }
       format.json { render json: @song_room }
     end
   end
@@ -94,12 +89,23 @@ class SongRoomsController < ApplicationController
   end
 
   def song_room_search_collaborators
+      @song_room = params[:song_room_id]
       if params[:query].present?
       @search_users_for_collaborations = User.search(params)
       end
       respond_to do |format|
         format.html
       format.js {render :layout => false }
+    end
+  end
+
+  def song_room_song_version_comments
+    @song_room_song_version = SongRoomSongVersion.find_by_id(params[:id])
+    @song_comments = @song_room_song_version.comments.all
+
+    respond_to do |format|
+      format.html
+      format.js
     end
   end
 end

@@ -38,13 +38,14 @@
 <section class="app">
   <aside class="side">
     <a href="index.html" class="add" title="Upload a track"><i class="upload">Upload Track</i></a>
-    <%= form_for(@song_room_song_version) do |f| %>
+    <%= form_for(@new_song_room_song_version) do |f| %>
       <%= f.file_field :song_version_upload %>
       <%= f.hidden_field :song_room_id %>
       <%= f.hidden_field :user_id %>
       <%= f.submit "Add Song" %>
     <% end %>
     
+<<<<<<< HEAD
     <ul class="tabs">
       <% @song_room_song_versions.each do |song| %>
 				<li>
@@ -124,11 +125,38 @@
               </div>
             </li>
           <% end %>
+=======
+    <%= render 'song_room_song_versions' %>
+  </aside>
+  <section class="main main_open">
+      <article class="chat">
+        <textarea></textarea>
+        <input type="submit" id="send" value="Send message">
+      </article>
+  <%= render 'chat' %>
+</section>
+  <section class="info info_open">
+    <ul class="accordion">
+          <% if current_user.id = @song_room.user_id %>
+      			<li id="one" class="files">
+      				<a href="#one" class="a_header">Room Settings</a>
+      				<ul class="sub-menu">
+      				  <li class="room_settings">
+        					<%= render "song_rooms/form" %> 
+      				  </li>
+      				</ul>
+      			</li>
+      		<% end %>
+			     <%= render 'current_collaborators' %>
+
+>>>>>>> develop
             <li class="search_box">
-                <%= render 'collaborator_search_form' %>
+              <%= render 'collaborator_search_form' %>
             </li>
+
             <li id="3">
               <% if @search_users_for_collaborations %>
+<<<<<<< HEAD
                 <%= render 'collaborator_search_results' %>
               <% end %>
             </li>
@@ -140,17 +168,18 @@
               <div class="bt_add">
                 <a href="#add">Hey</a>
               </div>
+=======
+                <%= render 'song_rooms/collaborator_search_results'  %>
+            <% end %>
+>>>>>>> develop
             </li>
 -->
 				</ul>
     </ul>
   </section>
 </section>
-
-
-
-
 <script type="text/javascript">
+<<<<<<< HEAD
 //<![CDATA[
 $(document).ready(function(){
   
@@ -177,6 +206,30 @@ $(document).ready(function(){
     if ($(this).attr('class') != 'active'){
       $('.active').toggleClass('active');
       $(this).toggleClass('active');
+=======
+$(document).ready(function(){
+  
+    <% @song_room_song_versions.each do |song| %>
+      $("#jquery_jplayer_<%= song.id%>").jPlayer({
+        ready: function () {
+          $(this).jPlayer("setMedia", {
+            mp3: "<%= song.song_version_upload.url %>"
+          });
+        },
+        play: function() { // To avoid both jPlayers playing together.
+          $(this).jPlayer("pauseOthers");
+        },
+        swfPath: "js",
+        supplied: "mp3",
+        cssSelectorAncestor: "#jp_container_<%= song.id%>"
+      });
+    <% end %>
+    
+    $('ul.tabs li').first().addClass('active');
+    /*
+$('li .a .jp-audio:hover').mouseover(function() {
+      $(this).first('jp-download').css('opacity' , 1);
+>>>>>>> develop
     }
   });
   // Hover
@@ -206,10 +259,44 @@ $('.icon-pq-people').click(function() {
     event.preventDefault();
   });
 */
+<<<<<<< HEAD
   
   // ACCORDION //
   var accordion_head = $('.accordion > li > a'),
       accordion_body = $('.accordion li > .sub-menu');
+=======
+      
+    // TEXTAREA FOCUS //
+    $('textarea').focus(function() {
+      $(this).animate({ height:60 });
+    });
+    $('textarea').focusout(function() {
+      $(this).animate({ height:25 });
+    });
+    
+    // MENU RIGHT //
+    function div_toggle(){
+      $('.main').toggleClass('main_open', 500);
+      $('.info').toggleClass('info_open', 500);
+    }
+    $('.icon-pq-settings').click(function() {
+      div_toggle();
+      event.preventDefault();
+    });
+    $('.icon-pq-people').click(function() {
+      div_toggle();
+      event.preventDefault();
+    });
+    
+    
+    // ACCORDION //
+    // Store variables
+    var accordion_head = $('.accordion > li > a'),
+        accordion_body = $('.accordion li > .sub-menu');
+
+    // Open the first tab on load
+    accordion_head.last().addClass('active').next().slideDown('normal');
+>>>>>>> develop
 
   // Open the first tab on load
   accordion_head.last().addClass('active').next().slideDown('normal');
@@ -227,6 +314,13 @@ $('.icon-pq-people').click(function() {
         $(this).addClass('active');
     }
   });
+<<<<<<< HEAD
 });
 //]]>
 </script>
+=======
+</script>
+
+
+
+>>>>>>> develop

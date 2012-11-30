@@ -1,22 +1,19 @@
 class RequestsController < ApplicationController
+  before_filter :authenticate_user!
 
-	def accept
-		collab_request = Collaborator.find_by_id(params[:id])
-	    collab_request.update_attributes(:accepted => true)
-        @collab_request = collab_request
-        if collab_request.accepted?
-		    respond_to do |format|
-				format.html { redirect_to home_path  }
-		    end
-	    end
-	end
+  def accept
+    @collaborators = current_user.collaborators.find_by_id(params[:id])
+    @collab_request.update_attributes(:accepted => true)
+    redirect_to song_room_path(@collab_request.song_room_id)
+  end
 
-	def deny
-		collab_request = Collaborator.find_by_id(params[:id])
-	    collab_request.update_attributes(:accepted => false)
-        @collab_request = collab_request
-	    respond_to do |format|
-			format.html { redirect_to home_path  }
-	    end
-	end
+  def deny
+    @collaborators = current_user.collaborators.find_by_id(params[:id])
+    @collaborators.update_attributes(:accepted => false)
+
+    respond_to do |format|
+      format.html  redirect_to home_path 
+    end
+  end
+
 end
