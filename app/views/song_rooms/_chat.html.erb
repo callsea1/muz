@@ -1,11 +1,22 @@
+<section class="main main_open">
+
+<article class="chat">
+  <%= form_for Comment.new do |f| %>
+    <%= f.text_field :body %>
+    <%= f.hidden_field :song_room_song_version_id %>
+    <%= f.submit "Send Message" %>
+  <% end %>
+</article>
+
 <div id="fast-chat">
-	<% if @comments %>
-  <% @comments.each do |comment| %>
-    <%= comment.body %>
+  <% if @comments %>
+    <% @comments.each do |comment| %>
+      <%= comment.body %>
+    <% end %>
+  <% else %>
+    <% @song_comments.each do |comment| %>
+      <%= comment.body %>
+    <% end %> 
   <% end %>
-<% else %>
-  <% @song_comments.each do |comment| %>
-    <%= comment.body %>
-  <% end %>
-<% end %>
 </div>
+</section

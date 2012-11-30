@@ -48,13 +48,9 @@
     
     <%= render 'song_room_song_versions' %>
   </aside>
-  <section class="main main_open">
-      <article class="chat">
-        <textarea></textarea>
-        <input type="submit" id="send" value="Send message">
-      </article>
-  <%= render 'chat' %>
-</section>
+  
+    <%= render 'chat', :song_room => @song_room %>
+  
   <section class="info info_open">
     <ul class="accordion">
           <% if current_user.id = @song_room.user_id %>

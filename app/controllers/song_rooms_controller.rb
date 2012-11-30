@@ -18,6 +18,7 @@ class SongRoomsController < ApplicationController
     #@song_room_song_versions = SongRoomSongVersion.find_with_reputation(:votes, :all, order: "votes desc")
     @song_room_song_versions = @song_room.song_room_song_versions.all
     @comments = @song_room_song_versions.first.comments
+    @song_room_song_version = SongRoomSongVersion.find_by_id(params[:id])
     @collaborators = @song_room.collaborators.where(:accepted => true)
     @new_song_room_song_version = @song_room.song_room_song_versions.build(params[:song_room_song_version])
     @users = User.all
@@ -102,10 +103,11 @@ class SongRoomsController < ApplicationController
   def song_room_song_version_comments
     @song_room_song_version = SongRoomSongVersion.find_by_id(params[:id])
     @song_comments = @song_room_song_version.comments.all
+    @comment = Comment.new
 
     respond_to do |format|
       format.html
-      format.js
+      format.js {render :layout => false }
     end
   end
 end
