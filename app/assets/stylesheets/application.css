@@ -2,6 +2,7 @@
  *= require_self
  *= # require_tree .
  *= require jplayer
+ *= require font-awesome
  */
 /* ========================================================
    RESET BROWSER
@@ -19,7 +20,8 @@ body,html{
 }
 
 body {
-  background: #f0f0f0;
+  background: #FF7260;
+  /* background: #55ABA8; */
   color: #404040;
   font-family: 'Titillium Web', Verdana, sans-serif;
   font-size: 16px;
@@ -39,7 +41,7 @@ input, label, textarea {
   font-family: 'Titillium Web', Verdana, sans-serif;
 }
 
-strong {
+strong, .strong {
   font-weight: 600;
 }
 
@@ -72,6 +74,16 @@ input, label, textarea {
   max-width: 960px;
   margin: 0 auto;
 }
+
+.one_half  { width:48.50%; }
+.one_third { width:31.33%; }
+.two_third { width:65.65%; }
+.one_forth { width:22.75%; }
+.three_forth { width:74.23%; }
+.one_half, .one_third, .two_third, .one_forth, .three_forth { position:relative; margin-right:2.6%; float:left; overflow:hidden; }
+.one_half img, .one_third img, .two_third img, .one_forth img, .three_forth img { max-width: 100%; }
+.last { margin-right:0 !important; clear:right; }
+.clearboth { clear:both; display:block; font-size:0; height:0; line-height:0; width:100%; }
 
 .clearfix::before, .clearfix::after { content: " 0020"; display: block; height: 0; visibility: hidden; }
 .clearfix::after { clear: both; } .clearfix { zoom: 1; }
@@ -136,6 +148,23 @@ input, label, textarea {
   border-radius: 3px;
 }
 
+
+.box {
+  position: relative;
+  min-height: 160px;
+  border: 1px solid;
+  border-color: #f0f0f0 #dadada #dadada;
+  border-radius: 6px;
+}
+.box_title {
+  display: block;
+  padding: 5px 8px;
+  background: #f9f9f9;
+  border-bottom: 1px solid #dadada;
+  border-radius: 6px 6px 0 0;
+}
+
+
 /* ========================================================
    HEADER
    ===================================================== */
@@ -172,14 +201,17 @@ input, label, textarea {
 	width: 32px;
 	height: 32px;
 	margin-right: 8px;
-	border: 1px solid #000;
-	border-radius: 4px;
+	-webkit-box-shadow: inset 0px 1px 0px 0px rgba(0,0,0, .3), 0px 1px 0px 0px rgba(0,0,0, .3);
+	-moz-box-shadow: inset 0px 1px 0px 0px rgba(0,0,0, .3), 0px 1px 0px 0px rgba(0,0,0, .3);
+	box-shadow: inset 0px 1px 0px 0px rgba(0,0,0, .3), 0px 1px 0px 0px rgba(0,0,0, .3);
+	/* border: 1px solid #404040; */
+	border-radius: 3px;
 }
 .user h5 {
 	float: left;
 	padding-top: 10px;
 	line-height: 14px;
-	font-size: 1em;
+	font-size: .85em;
 	font-weight: bold;
 	color: #fcfcfc;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.9);

@@ -3,8 +3,7 @@
 <% end %>
 <header class="main_menu clearfix">
   <a href="/" title="Back to homepage">
-    <!-- <img src="logo.png" alt="Logo" class="logo fleft" /> -->
-    <%= image_tag "logo.png", :class => "logo fleft" %>
+    <%= image_tag "logo-room.png", :class => "logo fleft" %>
   </a>
   <div id="room_info" class="fleft">
     <h1 class="room_title"><%= @song_room.title %></h1>
@@ -12,9 +11,9 @@
   </div>
   <div class="user">
     <% if current_user.provider.present? %>
-      <img src="<%= current_user.image %>" />
-    <% else %>
       <%= image_tag(current_user.image) %>
+    <% else %>
+      <%= image_tag "avatar.png" %>
     <% end %>
       <h5><%= current_user.name %></h5>
       <ul>
@@ -29,8 +28,8 @@
       <li class="fleft mright">
         
       </li>
-      <li class="fleft mmiddle mright mleft pleft"><a href="#" class="icon-pq-settings" title="Room eettings">Settings</a></li>
-      <li class="fleft mmiddle mright mleft pleft"><a href="<%= root_url %>" class="icon-pq-exit" title="Leave the room">Exit</a></li>      
+      <li class="fleft mmiddle mright mleft pleft"><a href="#" class="icon_pq-settings" title="Room Settings"></a></li>
+      <li class="fleft mmiddle mright mleft pleft"><a href="<%= root_url %>" class="icon_pq-exit" title="Leave the room"></a></li>      
     </ul>
     
   </nav>
@@ -87,7 +86,7 @@
   </aside>
   <section class="main main_open">
 		  <article class="chat">
-		    <textarea></textarea>
+		    <textarea rows="50"></textarea>
 		    <input type="submit" id="send" value="Send message">
 		  </article>
   </section>
@@ -112,7 +111,11 @@
                 <%#= link_to "#{collaborator.user.name}", user_path(collaborator.user.id) %>
               <%# end %>
               <a href="#">
-                <em><%= image_tag(collaborator.user.image) %></em>
+                <% if collaborator.user.image.present? %>
+                  <em><%= image_tag(collaborator.user.image) %></em>
+                <% else %>
+                  <em><%= image_tag "avatar.png" %></em>
+                <% end %>
                 <%= collaborator.user.name %>
                 <span><%= collaborator.user.instrument_1 %></span>
               </a>
@@ -181,10 +184,10 @@ $(document).ready(function(){
   
   	
 	// TEXTAREA FOCUS //
-	$('textarea').focus(function() {
+	$('.chat textarea').focus(function() {
   	$(this).animate({ height:60 });
   });
-  $('textarea').focusout(function() {
+  $('.chat textarea').focusout(function() {
   	$(this).animate({ height:25 });
   });
   
@@ -193,14 +196,16 @@ $(document).ready(function(){
     $('.main').toggleClass('main_open', 500);
     $('.info').toggleClass('info_open', 500);
   }
-  $('.icon-pq-settings').click(function() {
+  $('.icon_pq-settings').click(function() {
     div_toggle();
     event.preventDefault();
   });
-  $('.icon-pq-people').click(function() {
+  /*
+$('.icon-pq-people').click(function() {
     div_toggle();
     event.preventDefault();
   });
+*/
   
   // ACCORDION //
   var accordion_head = $('.accordion > li > a'),

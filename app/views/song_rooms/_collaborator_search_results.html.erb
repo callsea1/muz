@@ -4,7 +4,17 @@
       <%#= link_to "#{collaborator.user.name}", user_path(collaborator.user.id) %>
     <%# end %>
     <a href="#">
-      <em><%= image_tag(user.image) %></em>
+      
+      
+      
+      <% if user.image.present? %>
+        <em><%= image_tag(user.image) %></em>
+      <% else %>
+        <%= image_tag "avatar.png" %>
+      <% end %>
+      
+      
+      
       <%= user.name %>
       <span><%= user.instrument_1 %></span>
     </a>
