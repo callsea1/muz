@@ -48,6 +48,7 @@
     <ul class="tabs">
       <% @song_room_song_versions.each do |song| %>
 				<li>
+          <%= link_to song_comments_path(song), remote: :true do %>
   				<div class="a">
   				  <div id="jquery_jplayer_<%= song.id%>" class="jp-jplayer"></div>
             <div id="jp_container_<%= song.id%>" class="jp-audio">
@@ -80,6 +81,7 @@
         		</div>
         		<%= link_to "Download", download_path(song), :class => "jp-download" %> 
   				</div>
+          <% end %>
 				</li>
 		  <% end %>
     </ul>
@@ -88,13 +90,9 @@
     
     <%#= render 'song_room_song_versions' %>
 
-  
-    <%#= render 'chat', :song_room => @song_room %>
-
-
-<!----CHATROOM HERE ---->
-
-
+<section class="main main_open" id="chat">
+  <%= render 'song_version_chat' %>
+</section>
   
   <section class="info info_open">
     <ul class="accordion">
@@ -120,11 +118,12 @@
                 <%= render 'collaborator_search_results' %>
               <% end %>
             </li>
-
+        
 				</ul>
     </ul>
   </section>
-</section>
+
+
 <script type="text/javascript">
 //<![CDATA[
 $(document).ready(function(){
