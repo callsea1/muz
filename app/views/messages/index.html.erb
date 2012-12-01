@@ -1,0 +1,17 @@
+
+<h1>Chatroom</h1>
+
+<ul id="chatroom">
+  <%= render @messages %>
+</ul>
+
+<%= form_for Message.new, remote: true do |f| %>
+  <%= f.text_field :content %>
+  
+<% end %>
+
+<%= subscribe_to "/messages/new" %>
+
+
+
+

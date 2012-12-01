@@ -51,3 +51,6 @@ gem 'oauth2'
 gem "omniauth-37signals", "~> 1.0.4"
 
 gem 'activerecord-reputation-system', require: 'reputation_system'
+gem 'private_pub'
+gem 'thin'
+gem 'hiredis'

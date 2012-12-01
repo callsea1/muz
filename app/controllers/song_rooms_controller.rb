@@ -14,10 +14,12 @@ class SongRoomsController < ApplicationController
   # GET /song_rooms/1
   # GET /song_rooms/1.json
   def show
+
+    #@messages = Message.all
     @song_room = SongRoom.find(params[:id])
     #@song_room_song_versions = SongRoomSongVersion.find_with_reputation(:votes, :all, order: "votes desc")
     @song_room_song_versions = @song_room.song_room_song_versions.all
-    @comments = @song_room_song_versions.first.comments
+    #@comments = @song_room_song_versions.first.comments
     @song_room_song_version = SongRoomSongVersion.find_by_id(params[:id])
     @collaborators = @song_room.collaborators.where(:accepted => true)
     @new_song_room_song_version = @song_room.song_room_song_versions.build(params[:song_room_song_version])
@@ -110,4 +112,8 @@ class SongRoomsController < ApplicationController
       format.js {render :layout => false }
     end
   end
+
+
+
+
 end

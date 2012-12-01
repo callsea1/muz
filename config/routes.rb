@@ -1,6 +1,8 @@
 Music::Application.routes.draw do
 
 
+  resources :messages
+
   get('/song_room_song_version_comments/:id', {:controller => "SongRooms", :action => 'song_room_song_version_comments', :as => 'song_comments'})
 
   get('/song_room_search_collaborators', { :controller => "SongRooms", :action => 'song_room_search_collaborators', :as => 'search_collaborators'})
@@ -10,6 +12,7 @@ Music::Application.routes.draw do
   match 'download/:id' =>  'song_room_song_versions#download', :as => :download
 
   resources :comments
+
 
   resources :song_room_song_versions do 
 
