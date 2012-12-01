@@ -29,7 +29,7 @@
         
       </li>
       <li class="fleft mmiddle mright mleft pleft"><a href="#" class="icon_pq-settings" title="Room Settings"></a></li>
-      <li class="fleft mmiddle mright mleft pleft"><a href="<%= root_url %>" class="icon_pq-exit" title="Leave the room"></a></li>      
+      <li class="fleft mmiddle mright mleft pleft"><a href="<%= user_home_url %>" class="icon_pq-exit" title="Leave the room"></a></li>      
     </ul>
     
   </nav>
@@ -84,51 +84,10 @@
 		  <% end %>
     </ul>
   </aside>
-  <section class="main main_open">
-		  <article class="chat">
-		    <textarea rows="50"></textarea>
-		    <input type="submit" id="send" value="Send message">
-		  </article>
-  </section>
-  <section class="info info_open">
-    <ul class="accordion">
-      <% if current_user.id = @song_room.user_id %>
-  			<li id="one" class="files">
-  				<a href="#one" class="a_header">Room Settings</a>
-  				<ul class="sub-menu">
-  				  <li class="room_settings">
-    					<%= render "song_rooms/form" %> 
-  				  </li>
-  				</ul>
-  			</li>
-  		<% end %>
-			<li id="two" class="mail">
-				<a href="#two" class="a_header">Collaborators<span>4</span></a>
-				<ul class="sub-menu">
-				  <% @collaborators.each do |collaborator| %>
-            <li>
-              <%# if collaborator.accepted? %>
-                <%#= link_to "#{collaborator.user.name}", user_path(collaborator.user.id) %>
-              <%# end %>
-              <a href="#">
-                <% if collaborator.user.image.present? %>
-                  <em><%= image_tag(collaborator.user.image) %></em>
-                <% else %>
-                  <em><%= image_tag "avatar.png" %></em>
-                <% end %>
-                <%= collaborator.user.name %>
-                <span><%= collaborator.user.instrument_1 %></span>
-              </a>
-              <div class="bt_del">
-                <%= link_to 'Destroy', delete_collaborator_path(@song_room, collaborator), method: :delete, data: { confirm: 'Are you sure?' } %>
-              </div>
-            </li>
-          <% end %>
-				</ul>
-			</li>
-		</ul>
+
+    
     <%#= render 'song_room_song_versions' %>
-  </aside>
+
   
     <%= render 'chat', :song_room => @song_room %>
   
