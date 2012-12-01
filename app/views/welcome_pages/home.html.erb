@@ -1,4 +1,50 @@
-<%= @welcome %>
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'user_home' %>
+<% end %>
+
+
+<div id="user_home" class="container_960">
+  
+  <section id="header" class="clearfix">
+    <header id="header_logo" class="tcenter mvert pvert one_forth">
+      <%= image_tag "logo.png" %>
+    </header>
+    <div id="header_nav" class="mvert pvert one_half">
+      <nav id="main_nav" class="mtop fleft">
+        <h4 class="mleft">Navigation</h4>
+        <ul class="mtop mleft">
+          <li><a href="#"><i class="icon-group icon_pq"> </i>Artists</a></li>
+          <li><a href="#"><i class="icon-headphones icon_pq"> </i>Rooms</a></li>
+          <li><a href="#"><i class="icon-music icon_pq"> </i>Songs</a></li>
+        </ul>
+      </nav>
+      <footer class="fright">
+        <%#= render 'song_rooms/collaborator_search_form' %>
+      </footer>
+    </div>
+    <footer id="header_search" class="mvert pvert one_forth last">
+      <div class="user">
+        <% if current_user.provider.present? %>
+          <%= image_tag(current_user.image) %>
+        <% else %>
+          <%= image_tag "avatar.png" %>
+        <% end %>
+          <h5><%= current_user.name %></h5>
+          <ul>
+            <li><%= link_to "View Profile", user_path(current_user) %></li>
+            <li><%= link_to "Edit Profile", "/users/edit" %></li>
+            <li><%= link_to "Sign out", destroy_user_session_path(), :method => :delete %></li>
+            <li class="sep">Joined: <%= time_ago_in_words(current_user.created_at) %> ago.</li>
+          </ul>
+      </div>
+    </footer>
+  </section>
+
+
+
+
+
+
 
 <% unless current_user.registration_complete? %>
  <%= render 'devise/registrations/music_form' %>
@@ -7,20 +53,12 @@
  
 
 
-   <% @collab_requests.each do |collab_request| %>
-   <%# if current_user.id == collab_request.user_id %>
-     <% if collab_request.accepted.nil? %>
-       <%= link_to "Accept", "/accept/#{collab_request.id}", :method => 'put' %>
-       <%= link_to "Deny", "/deny/#{collab_request.id}", :method => 'put' %>
-     <% end %>
-    <% end %>
-   <%# end %>
 
 <nav>
 	<ul>
-<li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+<li><%= link_to "Log out", logout_path(), :method => :delete %></li>
 <li><%= link_to "Your Profile", user_path(current_user) %></li>
-<li><%= link_to "Create a Song Room", new_song_room_path %></li>
+
 <li><%= link_to "New Song Upload", new_user_song_upload_path %></li>
   </ul>
 </nav>
@@ -29,19 +67,13 @@
   
 </ul>
 
-<ul>
-	<h2>Things To Do:</h2>
-  <li>Form for user to add music preferences, musical title, instruments played</li>
-  <li>Upload Song Button</li>
-  <li>List of current song rooms</li>
-  <li>Friends/Suggestions</li>
-  <li>Create Room Button</li>
 
-
-</ul>
 
 <ul>
+  <li><%= link_to "Create a Song Room", new_song_room_path %></li>
 <% @current_user_song_rooms.each do |song_room| %>
-  <%= link_to "#{song_room.title}", song_room_path(song_room) %>
+  <li><%= link_to "#{song_room.title}", song_room_path(song_room) %></li>
 <% end %>
 </ul>
+
+</div>

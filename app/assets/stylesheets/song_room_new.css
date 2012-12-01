@@ -1,0 +1,156 @@
+html, body { height: 100%; }
+body {
+  background: #55aba8;
+}
+.main {
+  padding-top: 100px;
+  min-height: 100%;
+  background: #55aba8 url(bg-new-room.jpg) no-repeat center top;
+}
+
+.logo-banner {
+  position: absolute;
+  width: 79px;
+  height: 100px;
+  top: 89px;
+  left: 60%;
+  margin: 0 0 0 -38.5px;
+  z-index: 9999; 
+}
+
+
+
+.form-1 {
+  width: 400px;
+  margin: 0px auto 10px;
+  padding: 10px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+      0 0 1px rgba(0, 0, 0, 0.3), 
+      0 3px 7px rgba(0, 0, 0, 0.3), 
+      inset 0 1px rgba(255,255,255,1),
+      inset 0 -3px 2px rgba(0,0,0,0.25);
+  border-radius: 5px;
+  background: white;
+  background: -moz-linear-gradient(#eeefef, #ffffff 10%);
+  background: -ms-linear-gradient(#eeefef, #ffffff 10%);
+  background: -o-linear-gradient(#eeefef, #ffffff 10%);
+  background: -webkit-gradient(linear, 0 0, 0 100%, from(#eeefef), color-stop(0.1, #ffffff));
+  background: -webkit-linear-gradient(#eeefef, #ffffff 1%);
+  background: linear-gradient(#eeefef, #ffffff 10%);
+}
+
+.form-1 .field {
+  position: relative;
+}
+
+.form-1 input[type=text],
+.form-1 textarea {
+    font-family: 'Titillium Web', Verdana, sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+    /* Size and position */
+    width: 94%;
+    padding: 10px;
+
+    /* Styles */
+    border: none; /* Remove the default border */
+    box-shadow: 
+        inset 0 0 5px rgba(0,0,0,0.1),
+        inset 0 3px 2px rgba(0,0,0,0.1);
+    border-radius: 3px;
+    background: #f9f9f9;
+    color: #777;
+    -webkit-transition: color 0.3s ease-out;
+    -moz-transition: color 0.3s ease-out;
+    -ms-transition: color 0.3s ease-out;
+    -o-transition: color 0.3s ease-out;
+    transition: color 0.3s ease-out;
+}
+
+.form-1 input[type=text] {
+    margin-bottom: 10px;
+}
+
+.form-1 input[type=text]:hover ~ i,
+.form-1 input[type=password]:hover ~ i {
+    color: #52cfeb;
+}
+
+.form-1 input[type=text]:focus ~ i,
+.form-1 input[type=password]:focus ~ i {
+    color: #42A2BC;
+}
+
+.form-1 input[type=text]:focus,
+.form-1 input[type=password]:focus,
+.form-1 input[type=submit]:focus {
+    outline: none;
+}
+
+
+/* ========================================================
+   CALL TO ACTION
+   ===================================================== */
+.button_call_gd {
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  padding: 3px 20px;
+  line-height: 1.5em;
+  margin: 10px 0;
+  font-size: 1em;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-shadow: 0 -1px rgba(0, 0, 0, 0.5);
+  background: #55ABA8;
+  background-clip: padding-box;
+  border: 1px solid;
+  border-color: #067672 #015e5b #015e5b;
+  border-radius: 3px;
+  -webkit-font-smoothing: antialiased;
+  -webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+.button_call_gd:hover, .button_call_gd.hover {
+  background-color: #39aba7;
+  border-color: #067672;
+  -webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 1px 5px #015e5b;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 1px 5px #015e5b;
+}
+.button_call_gd:active, .button_call_gd.active {
+  border-color: #253680 #2b3e94 #3147a8;
+  background: #18ada8;
+  -webkit-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.8);
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.8);
+}
+.button_call_gd:before {
+  content: '';
+  position: absolute;
+  top: 16px;
+  right: 17px;
+  width: 17px;
+  height: 17px;
+  background: #015e5b;
+  border-radius: 9px;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4), 0 1px rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4), 0 1px rgba(255, 255, 255, 0.2);
+}
+.button_call_gd:after {
+  content: '>';
+  float: right;
+  position: relative;
+  margin-top: 2px;
+  margin-left: 15px;
+  font: bold 18px/33px "Comic Sans MS";
+  line-height: 33px\0;
+  color: #55ABA8;
+  text-shadow: 0 -1px #8696dc, 0 1px 1px rgba(0, 0, 0, 0.3);
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+

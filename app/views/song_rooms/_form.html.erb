@@ -1,8 +1,7 @@
-<%= form_for(@song_room) do |f| %>
+<%= form_for(@song_room, :html => { :class => "form-1" }) do |f| %>
   <% if @song_room.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@song_room.errors.count, "error") %> prohibited this song_room from being saved:</h2>
-
       <ul>
       <% @song_room.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -11,17 +10,11 @@
     </div>
   <% end %>
 
+  <%= f.label :title %>
+  <%= f.text_field :title %>
 
-    <%= f.label :title %>
-    <%= f.text_field :title %>
+  <%= f.label :description %>
+  <%= f.text_area :description, rows: "5" %>
 
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-  <!--
-<div class="field">
-    <%= f.label :public_or_private %><br />
-    <%= f.select :public_or_private, ["public", "private"]%>
-  </div>
--->
-    <%= f.submit %>
+  <%= f.submit "Submit", class: "button_call_gd" %>
 <% end %>

@@ -3,19 +3,30 @@
  * http://www.jplayer.org
  */
 
+ul.tabs li {
+  opacity: .1;
+  -webkit-transition: opacity 0.5s;
+  -moz-transition: opacity 0.5s;
+  -ms-transition: opacity 0.15s;
+  -o-transition: opacity 0.15s;
+  transition: opacity 0.5s;
+}
+ul.tabs li:hover, ul.tabs li:hover ul li, ul.tabs li:hover .jp-download {
+  opacity: 1;
+}
+
+ul.tabs li.active, ul.tabs li.active:hover, ul.tabs li.active ul li {
+  opacity: 1;
+}
+
+
 .jp-audio {
-	/* width: 390px; */
 	font-family: 'Titillium Web', Verdana, sans-serif;
 }
 
-li .a .jp-audio, .jp-download {
-	opacity: .1;
+li .a .jp-audio/* , li .a .jp-download */ {
+	/* opacity: .1; */
 	background: #f0f0f0;
-/*
-	border: 1px solid #000;
-	border-right: none;
-	border-radius: 9px 0 0 9px;
-*/
 	-webkit-transition: opacity 0.5s;
   -moz-transition: opacity 0.5s;
   -ms-transition: opacity 0.15s;
@@ -23,12 +34,12 @@ li .a .jp-audio, .jp-download {
   transition: opacity 0.5s;
 }
 
-li.active .a .jp-audio, li.active .jp-download {
-	opacity: 1;
+li.active .a .jp-audio, li.active .a .jp-download {
+	/* opacity: 1; */
 }
 
-li .a .jp-audio:hover, .jp-download:hover {
-  opacity: .9;
+li .a .jp-audio:hover {
+  /* opacity: .9; */
   background: #eee;
 }
 

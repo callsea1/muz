@@ -1,0 +1,171 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'website' %>
+  <%= javascript_include_tag 'jquery.gridrotator' %>
+<% end %>
+
+
+<!--
+<header class="nav_top clearfix">
+  <nav class="container_960">
+      <ul class="dinline fright">
+        <li><a href="#" class="mright">Artists</a></li>
+        <li><a href="#" class="mright mleft">Rooms</a></li>
+        <li><a href="#" class="mright mleft">Songs</a></li>
+        <li><a href="#" class="mright mleft">Tracks</a></li>
+        <li><a href="#" class="mright mleft">Register</a></li>
+        <li><a href="#" class="mleft">Sign in</a></li>
+      </ul>
+    </nav>
+</header>
+-->
+<header class="clearfix">
+  <ul class="button-group">
+  	<li><%= link_to "Register", register_path(), class: "button" %></li>
+  	<li><%= link_to "Log in", login_path(), class: "button" %></li>
+  </ul>
+</header>
+
+<section class="container_full">
+  <header id="logo_gd_over" class="container_960">
+    <a href="/" title="Back to homepage" class="mauto">
+      <%= image_tag "logo_gd-transp.png", :class => "logo" %>
+    </a>
+  </header>
+  
+  <article class="main">
+    <div id="ri-grid" class="ri-grid ri-grid-size-2">
+  		<%= image_tag "loading.gif", class: "ri-loading-image" %>
+  		<ul>
+  			<li><a href="#"><%= image_tag "medium/1.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/2.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/3.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/4.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/5.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/6.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/7.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/8.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/9.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/10.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/11.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/12.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/13.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/14.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/15.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/16.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/17.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/18.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/19.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/20.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/21.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/22.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/23.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/24.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/25.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/26.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/27.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/28.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/29.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/30.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/31.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/32.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/33.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/34.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/35.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/36.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/37.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/38.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/39.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/40.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/41.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/42.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/43.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/44.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/45.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/46.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/47.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/48.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/49.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/50.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/51.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/52.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/53.jpg" %></a></li>
+  			<li><a href="#"><%= image_tag "medium/54.jpg" %></a></li>
+  		</ul>
+    </div>
+  </article>
+  
+  <footer class="banner">
+    <div class="line">
+      <span>The most vibrant</span>
+    </div>
+    <div class="line">
+      <span>independent music</span>
+    </div>
+    <div class="line">
+      <span>community</span>
+    </div>
+  </footer>
+</section>
+
+<a href="#how" class="down-arrow"><span></span></a>
+
+<section id="how" class="container_960 clearfix">
+  <div class="one_forth tcenter">
+    <%= image_tag "home-box.gif" %>
+    <h2>Identify</h2>
+    <p>Find the right collaborators to fit your needs</p>
+  </div>
+  <div class="one_forth tcenter">
+    <%= image_tag "home-box.gif" %>
+    <h2>Compose</h2>
+    <p>Create a recording room and start your work</p>
+  </div>
+  <div class="one_forth tcenter">
+    <%= image_tag "home-box.gif" %>
+    <h2>Monetize</h2>
+    <p>We engage our community to fundraise in support of your work</p>
+  </div>
+  <div class="one_forth tcenter last">
+    <%= image_tag "home-box.gif" %>
+    <h2>Spread</h2>
+    <p>Publish your work on Facebook and SoundCloud</p>
+  </div>
+</section>
+
+<section class="container_750 clearfix call_action tcenter">
+  <%= link_to "Rock out for free", register_path(), class: "button_call_gd" %>
+</section>
+
+<footer id="bottom_nav" class="container_full clearfix pvert mtop">
+  <nav class="container_960 pvert">
+      <ul class="dinline fright">
+        <li><a href="#" class="mright">Artists</a></li>
+        <li><a href="#" class="mright mleft">Rooms</a></li>
+        <li><a href="#" class="mright mleft">Songs</a></li>
+        <li><a href="#" class="mright mleft">Tracks</a></li>
+        <li><%= link_to "Register", register_path(), class: "mright mleft" %></li>
+        <li><%= link_to "Log in", login_path(), class: "mleft" %></li>
+      </ul>
+    </nav>
+</footer>
+
+<script type="text/javascript">	
+	$(function() {
+		$( '#ri-grid' ).gridrotator( {
+			rows		: 4,
+			columns		: 12,
+			animType	: 'fadeInOut',
+			animSpeed	: 1000,
+			interval	: 50,
+			step		: 1,
+			w320		: {
+				rows	: 3,
+				columns	: 4
+			},
+			w240		: {
+				rows	: 3,
+				columns	: 4
+			}
+		} );
+	});
+</script>
