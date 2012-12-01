@@ -37,12 +37,14 @@
 
 <section class="app">
   <aside class="side">
-    <a href="index.html" class="add" title="Upload a track"><i class="upload">Upload Track</i></a>
+    <!-- <a href="index.html" class="add" title="Upload a track"><i class="upload">Upload Track</i></a> -->
     <%= form_for(@new_song_room_song_version) do |f| %>
-      <%= f.file_field :song_version_upload %>
+      <div class="add">
+        <%= f.file_field :song_version_upload, onchange: "this.form.submit()" %>   
+      </div>
       <%= f.hidden_field :song_room_id %>
       <%= f.hidden_field :user_id %>
-      <%= f.submit "Add Song" %>
+      <%#= f.submit "Add Song" %>
     <% end %>
     
     <ul class="tabs">

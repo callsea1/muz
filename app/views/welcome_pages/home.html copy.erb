@@ -1,0 +1,63 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'user_home' %>
+<% end %>
+
+<section id="sidebar" class="one_forth">
+  <header class="tcenter mvert pvert">
+    <%= image_tag "logo.png" %>
+  </header>
+</section>
+
+
+
+
+
+
+
+<%= @welcome %>
+
+<% unless current_user.registration_complete? %>
+ <%= render 'devise/registrations/music_form' %>
+ <% end %>
+
+ 
+
+
+   <% @collab_requests.each do |collab_request| %>
+   <%# if current_user.id == collab_request.user_id %>
+     <% if collab_request.accepted.nil? %>
+       <%= link_to "Accept", "/accept/#{collab_request.id}", :method => 'put' %>
+       <%= link_to "Deny", "/deny/#{collab_request.id}", :method => 'put' %>
+     <% end %>
+    <% end %>
+   <%# end %>
+
+<nav>
+	<ul>
+<li><%= link_to "Log out", logout_path(), :method => :delete %></li>
+<li><%= link_to "Your Profile", user_path(current_user) %></li>
+<li><%= link_to "Create a Song Room", new_song_room_path %></li>
+<li><%= link_to "New Song Upload", new_user_song_upload_path %></li>
+  </ul>
+</nav>
+
+<ul>
+  
+</ul>
+
+<ul>
+	<h2>Things To Do:</h2>
+  <li>Form for user to add music preferences, musical title, instruments played</li>
+  <li>Upload Song Button</li>
+  <li>List of current song rooms</li>
+  <li>Friends/Suggestions</li>
+  <li>Create Room Button</li>
+
+
+</ul>
+
+<ul>
+<% @current_user_song_rooms.each do |song_room| %>
+  <%= link_to "#{song_room.title}", song_room_path(song_room) %>
+<% end %>
+</ul>

@@ -158,12 +158,20 @@ body {
   -ms-transition: all 0.3s ease-out;
   -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
+  background: #55aba8 url("bt-upload.png") no-repeat center top;
 }
 .side .add:hover {
   background: #3497bf;
-  background: #FF7260;
+  background: #FF7260 url("bt-upload.png") no-repeat center top;
   border-color: #2f8aaf;
   border-color: #bf4d28;
+}
+.side .add input {
+  display: block;
+  width: 100%;
+  height: 40px;
+  opacity: 0;
+  cursor: pointer;
 }
 
 .tabs {
