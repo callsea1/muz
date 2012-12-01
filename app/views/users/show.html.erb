@@ -32,7 +32,7 @@
 </header>
 
 <section class="container_960 clearfix">
-  <div id="main_profile_box" class="white">
+  <div id="main_profile_box" class="box white">
     <aside class="fleft mright">
       <% if current_user.image.present? %>
         <%= image_tag("http://graph.facebook.com/#{current_user.uid}/picture?type=square&width=160&height=160") %>
@@ -40,14 +40,10 @@
         <%= image_tag("pic1.jpg", :size => "160x160", :alt => "Profile Image", :class => "profile_img_big" ) %>
       <% end %>
     </aside>
-    <article class="mleft">
+    <article class="fleft">
       <h1><%= current_user.name %></h1>
       <h2><%= current_user.location %></h2>
       <footer class="interact_user">
-        <a href="#" class="love_icon">
-          <span class="icon-menu-like">Love this!</span>
-          <span class="love_counter">5</span>
-        </a>
         <a href="#" class="send_message">
           <span class="icon-menu-message">Let's talk</span>
           <span>Send Message</span>
@@ -57,11 +53,23 @@
     <aside class="user_info fright">
       <h3>Instruments:</h3>
       <p><%= current_user.instrument_1 %>, <%= current_user.instrument_2 %></p>
+      <h3>Music Preferences:</h3>
+      <p><%= current_user.music_preference_1 %>, <%= current_user.music_preference_2 %></p>
     </aside>
   </div>
 </section>
 
-
+<section class="container_960 clearfix">
+  <div class="one_third box white">
+    <h1 class="box_title">Song Rooms</h1>
+  </div>
+  <div class="one_third box white">
+    <h1 class="box_title">Songs</h1>
+  </div>
+  <div class="one_third box white last">
+    <h1 class="box_title">Tracks</h1>
+  </div>
+</section>
 
   
   <ul>

@@ -3,8 +3,7 @@
 <% end %>
 <header class="main_menu clearfix">
   <a href="/" title="Back to homepage">
-    <!-- <img src="logo.png" alt="Logo" class="logo fleft" /> -->
-    <%= image_tag "logo.png", :class => "logo fleft" %>
+    <%= image_tag "logo-room.png", :class => "logo fleft" %>
   </a>
   <div id="room_info" class="fleft">
     <h1 class="room_title"><%= @song_room.title %></h1>
@@ -12,9 +11,9 @@
   </div>
   <div class="user">
     <% if current_user.provider.present? %>
-      <img src="<%= current_user.image %>" />
-    <% else %>
       <%= image_tag(current_user.image) %>
+    <% else %>
+      <%= image_tag "avatar.png" %>
     <% end %>
       <h5><%= current_user.name %></h5>
       <ul>
@@ -29,8 +28,8 @@
       <li class="fleft mright">
         
       </li>
-      <li class="fleft mmiddle mright mleft pleft"><a href="#" class="icon-pq-settings" title="Room eettings">Settings</a></li>
-      <li class="fleft mmiddle mright mleft pleft"><a href="<%= root_url %>" class="icon-pq-exit" title="Leave the room">Exit</a></li>      
+      <li class="fleft mmiddle mright mleft pleft"><a href="#" class="icon_pq-settings" title="Room Settings"></a></li>
+      <li class="fleft mmiddle mright mleft pleft"><a href="<%= root_url %>" class="icon_pq-exit" title="Leave the room"></a></li>      
     </ul>
     
   </nav>
@@ -46,7 +45,89 @@
       <%= f.submit "Add Song" %>
     <% end %>
     
-    <%= render 'song_room_song_versions' %>
+    <ul class="tabs">
+      <% @song_room_song_versions.each do |song| %>
+				<li>
+  				<div class="a">
+  				  <div id="jquery_jplayer_<%= song.id%>" class="jp-jplayer"></div>
+            <div id="jp_container_<%= song.id%>" class="jp-audio">
+        			<div class="jp-type-single">
+        			 <div class="jp-title">
+        					<ul>
+        						<li><strong><%= song.user.name %>: </strong> v.<%= song.id %></li>
+        					</ul>
+        				</div>
+        				<div class="jp-gui jp-interface">
+        					<ul class="jp-controls">
+        						<li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>
+        						<li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>
+        					</ul>
+        					<div class="jp-progress">
+        						<div class="jp-seek-bar">
+        							<div class="jp-play-bar"></div>
+        						</div>
+        					</div>
+        					<div class="jp-time-holder">
+        						<div class="jp-current-time"></div>
+        						<div class="jp-duration"></div>
+        					</div>		   
+        				</div>
+        				<div class="jp-no-solution">
+        					<span>Update Required</span>
+        					To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+        				</div>
+        			</div>
+        		</div>
+        		<%= link_to "Download", download_path(song), :class => "jp-download" %> 
+  				</div>
+				</li>
+		  <% end %>
+    </ul>
+  </aside>
+  <section class="main main_open">
+		  <article class="chat">
+		    <textarea rows="50"></textarea>
+		    <input type="submit" id="send" value="Send message">
+		  </article>
+  </section>
+  <section class="info info_open">
+    <ul class="accordion">
+      <% if current_user.id = @song_room.user_id %>
+  			<li id="one" class="files">
+  				<a href="#one" class="a_header">Room Settings</a>
+  				<ul class="sub-menu">
+  				  <li class="room_settings">
+    					<%= render "song_rooms/form" %> 
+  				  </li>
+  				</ul>
+  			</li>
+  		<% end %>
+			<li id="two" class="mail">
+				<a href="#two" class="a_header">Collaborators<span>4</span></a>
+				<ul class="sub-menu">
+				  <% @collaborators.each do |collaborator| %>
+            <li>
+              <%# if collaborator.accepted? %>
+                <%#= link_to "#{collaborator.user.name}", user_path(collaborator.user.id) %>
+              <%# end %>
+              <a href="#">
+                <% if collaborator.user.image.present? %>
+                  <em><%= image_tag(collaborator.user.image) %></em>
+                <% else %>
+                  <em><%= image_tag "avatar.png" %></em>
+                <% end %>
+                <%= collaborator.user.name %>
+                <span><%= collaborator.user.instrument_1 %></span>
+              </a>
+              <div class="bt_del">
+                <%= link_to 'Destroy', delete_collaborator_path(@song_room, collaborator), method: :delete, data: { confirm: 'Are you sure?' } %>
+              </div>
+            </li>
+          <% end %>
+				</ul>
+			</li>
+		</ul>
+    <%#= render 'song_room_song_versions' %>
   </aside>
   
     <%= render 'chat', :song_room => @song_room %>
@@ -63,6 +144,7 @@
       				</ul>
       			</li>
       		<% end %>
+      		
 			     <%= render 'current_collaborators' %>
 
             <li class="search_box">
@@ -71,86 +153,91 @@
 
             <li id="3">
               <% if @search_users_for_collaborations %>
-                <%= render 'song_rooms/collaborator_search_results'  %>
-            <% end %>
+                <%= render 'collaborator_search_results' %>
+              <% end %>
             </li>
+
 				</ul>
     </ul>
   </section>
 </section>
 <script type="text/javascript">
+//<![CDATA[
 $(document).ready(function(){
   
-    <% @song_room_song_versions.each do |song| %>
-      $("#jquery_jplayer_<%= song.id%>").jPlayer({
-        ready: function () {
-          $(this).jPlayer("setMedia", {
-            mp3: "<%= song.song_version_upload.url %>"
-          });
-        },
-        play: function() { // To avoid both jPlayers playing together.
-          $(this).jPlayer("pauseOthers");
-        },
-        swfPath: "js",
-        supplied: "mp3",
-        cssSelectorAncestor: "#jp_container_<%= song.id%>"
-      });
-    <% end %>
-    
-    $('ul.tabs li').first().addClass('active');
-    /*
-$('li .a .jp-audio:hover').mouseover(function() {
-      $(this).first('jp-download').css('opacity' , 1);
+  // PLAYER LOOP //
+  <% @song_room_song_versions.each do |song| %>
+  	$("#jquery_jplayer_<%= song.id%>").jPlayer({
+  		ready: function () {
+  			$(this).jPlayer("setMedia", {
+  				mp3: "<%= song.song_version_upload.url %>"
+  			});
+  		},
+  		play: function() { // To avoid both jPlayers playing together.
+  			$(this).jPlayer("pauseOthers");
+  		},
+  		swfPath: "js",
+  		supplied: "mp3",
+  		cssSelectorAncestor: "#jp_container_<%= song.id%>"
+  	});
+  <% end %>
+  
+  // TABS ACTIVE //
+  // Click on Player
+  $("ul.tabs li").click(function() {
+    if ($(this).attr('class') != 'active'){
+      $('.active').toggleClass('active');
+      $(this).toggleClass('active');
     }
-*/
-      
-    // TEXTAREA FOCUS //
-    $('textarea').focus(function() {
-      $(this).animate({ height:60 });
-    });
-    $('textarea').focusout(function() {
-      $(this).animate({ height:25 });
-    });
-    
-    // MENU RIGHT //
-    function div_toggle(){
-      $('.main').toggleClass('main_open', 500);
-      $('.info').toggleClass('info_open', 500);
-    }
-    $('.icon-pq-settings').click(function() {
-      div_toggle();
-      event.preventDefault();
-    });
-    $('.icon-pq-people').click(function() {
-      div_toggle();
-      event.preventDefault();
-    });
-    
-    
-    // ACCORDION //
-    // Store variables
-    var accordion_head = $('.accordion > li > a'),
-        accordion_body = $('.accordion li > .sub-menu');
-
-    // Open the first tab on load
-    accordion_head.last().addClass('active').next().slideDown('normal');
-
-    // Click function
-    accordion_head.on('click', function(event) {
-        // Disable header links 
-        event.preventDefault();
-
-        // Show and hide the tabs on click
-        if ($(this).attr('class') != 'active'){
-            accordion_body.slideUp('normal');
-            $(this).next().stop(true,true).slideToggle('normal');
-            accordion_head.removeClass('active');
-            $(this).addClass('active');
-        }
-    });
-
   });
+  // Hover
+  $('ul.tabs li').first().toggleClass('active');
+  
+  	
+	// TEXTAREA FOCUS //
+	$('.chat textarea').focus(function() {
+  	$(this).animate({ height:60 });
+  });
+  $('.chat textarea').focusout(function() {
+  	$(this).animate({ height:25 });
+  });
+  
+  // MENU RIGHT //
+  function div_toggle(){
+    $('.main').toggleClass('main_open', 500);
+    $('.info').toggleClass('info_open', 500);
+  }
+  $('.icon_pq-settings').click(function() {
+    div_toggle();
+    event.preventDefault();
+  });
+  /*
+$('.icon-pq-people').click(function() {
+    div_toggle();
+    event.preventDefault();
+  });
+*/
+  
+  // ACCORDION //
+  var accordion_head = $('.accordion > li > a'),
+      accordion_body = $('.accordion li > .sub-menu');
+
+  // Open the first tab on load
+  accordion_head.last().addClass('active').next().slideDown('normal');
+
+  // Click function
+  accordion_head.on('click', function(event) {
+    // Disable header links 
+    event.preventDefault();
+
+    // Show and hide the tabs on click
+    if ($(this).attr('class') != 'active'){
+        accordion_body.slideUp('normal');
+        $(this).next().stop(true,true).slideToggle('normal');
+        accordion_head.removeClass('active');
+        $(this).addClass('active');
+    }
+  });
+});
+//]]>
 </script>
-
-
-

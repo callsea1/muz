@@ -1,4 +1,4 @@
-<%= form_for(@song_room) do |f| %>
+<%= form_for(@song_room, :html => { :class => "form-1"}) do |f| %>
   <% if @song_room.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@song_room.errors.count, "error") %> prohibited this song_room from being saved:</h2>

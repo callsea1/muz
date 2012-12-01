@@ -1,3 +1,19 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'user_home' %>
+<% end %>
+
+<section id="sidebar" class="one_forth">
+  <header class="tcenter mvert pvert">
+    <%= image_tag "logo.png" %>
+  </header>
+</section>
+
+
+
+
+
+
+
 <%= @welcome %>
 
 <% unless current_user.registration_complete? %>
@@ -18,7 +34,7 @@
 
 <nav>
 	<ul>
-<li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+<li><%= link_to "Log out", logout_path(), :method => :delete %></li>
 <li><%= link_to "Your Profile", user_path(current_user) %></li>
 <li><%= link_to "Create a Song Room", new_song_room_path %></li>
 <li><%= link_to "New Song Upload", new_user_song_upload_path %></li>
