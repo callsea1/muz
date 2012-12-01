@@ -1,41 +1,18 @@
 <% @search_users_for_collaborations.each do |user| %>
-<<<<<<< HEAD
   <li>
-    <%# if collaborator.accepted? %>
-      <%#= link_to "#{collaborator.user.name}", user_path(collaborator.user.id) %>
-    <%# end %>
     <a href="#">
-      
-      
-      
+      <em>
       <% if user.image.present? %>
-        <em><%= image_tag(user.image) %></em>
+        <%= image_tag(user.image) %>
       <% else %>
         <%= image_tag "avatar.png" %>
       <% end %>
-      
-      
-      
+      </em>         
       <%= user.name %>
       <span><%= user.instrument_1 %></span>
     </a>
     <div class="bt_add">
-      <a href="#add">Hey</a>
+      <%= link_to 'Add Collaborator', create_collaborator_path(:user_id => user.id, :song_room_id => @song_room), :method => 'post', :class => "bt_add" %>
     </div>
   </li>
 <% end %>
-=======
-              <li>
-              <%# if collaborator.accepted? %>
-                <%#= link_to "#{collaborator.user.name}", user_path(collaborator.user.id) %>
-              <%# end %>
-              <a href="#">
-                <em><%= image_tag(user.image) %></em>
-                  <%= user.name %>
-                <span><%= user.instrument_1 %></span>
-                <%= link_to 'Add Collaborator', create_collaborator_path(:user_id => user.id, :song_room_id => @song_room), :method => 'post', :class => "bt_add" %>
-              </a>
-              
-            </li>
-            <% end %>
->>>>>>> develop

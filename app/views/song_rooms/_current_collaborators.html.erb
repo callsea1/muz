@@ -1,18 +1,23 @@
 <li id="two" class="mail">
-        <a href="#two" class="a_header">Collaborators<span>4</span></a>
-        <ul class="sub-menu">
-          <% @collaborators.each do |collaborator| %>
-            <li>
-              <%# if collaborator.accepted? %>
-                <%#= link_to "#{collaborator.user.name}", user_path(collaborator.user.id) %>
-              <%# end %>
-              <a href="#">
-                <em><%= image_tag(collaborator.user.image) %></em>
-                <%= collaborator.user.name %>
-                <span><%= collaborator.user.instrument_1 %></span>
-              </a>
-              <div class="bt_del">
-                <%= link_to 'Destroy', delete_collaborator_path(@song_room, collaborator), method: :delete, data: { confirm: 'Are you sure?' } %>
-              </div>
-            </li>
+  <a href="#two" class="a_header">Collaborators<span>4</span></a>
+  <ul class="sub-menu">
+    <% @collaborators.each do |collaborator| %>
+      <li>
+        <a href="#">
+          <em>
+          <% if collaborator.user.image.present? %>
+            <%= image_tag(collaborator.user.image) %>
+          <% else %>
+            <%= image_tag "avatar.png" %>
           <% end %>
+          </em>
+          <%= collaborator.user.name %>
+          <span><%= collaborator.user.instrument_1 %></span>
+        </a>
+        <div class="bt_del">
+          <%= link_to 'Destroy', delete_collaborator_path(@song_room, collaborator), method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</li>
