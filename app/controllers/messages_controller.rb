@@ -42,16 +42,6 @@ class MessagesController < ApplicationController
   def create
     @message = Message.create!(params[:message])
 
-    respond_to do |format|
-      if @message.save
-        format.js
-        #format.html { redirect_to @message, notice: 'Message was successfully created.' }
-        #format.json { render json: @message, status: :created, location: @message }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @message.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # PUT /messages/1

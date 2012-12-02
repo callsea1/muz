@@ -1,4 +1,4 @@
 <% publish_to "/messages/new" do %>
-  $("#chatroom").append("<%= j render(@message) %>");
+  $("#chat").append("<%= j render(@message) %>");
+  $("#message_content").val('');
 <% end %>
-alert('Your book is overdue');
