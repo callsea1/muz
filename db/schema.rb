@@ -16,9 +16,9 @@ ActiveRecord::Schema.define(:version => 20121201210726) do
   create_table "collaborators", :force => true do |t|
     t.integer  "user_id"
     t.integer  "song_room_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-    t.boolean  "accepted"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.boolean  "accepted",     :default => true
   end
 
   create_table "comments", :force => true do |t|

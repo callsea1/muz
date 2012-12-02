@@ -2,7 +2,7 @@ class ChangeCollaboratosAcceptedOrNot < ActiveRecord::Migration
 
   def up
 	remove_column :collaborators, :accepted_or_not
-	add_column	  :collaborators, :accepted, :boolean
+	add_column	  :collaborators, :accepted, :boolean, :default => true
   end
 
   def down
