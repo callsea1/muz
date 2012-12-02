@@ -1,1 +1,78 @@
-<% @user.name %>
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'website' %>
+<% end %>
+<header class="main_header">
+  <div class="container_1140 clearfix">
+    <a href="/" title="Back to homepage">
+      <%= image_tag "logo.png", :class => "logo fleft" %>
+    </a>
+    <nav id="main_nav" class="fleft mtop">
+      <ul class="dinline mtop">
+        <li><a href="#" class="mright mleft icon-menu-artists">Artists</a></li>
+        <li><a href="#" class="mright mleft icon-menu-rooms">Rooms</a></li>
+        <li><a href="#" class="mright mleft icon-menu-songs">Songs</a></li>
+        <li><a href="#" class="mright mleft icon-menu-tracks">Tracks</a></li>
+        <li><a href="#" class="mleft icon-menu-search">Search</a></li>
+    </nav>
+    <div class="user">
+      <% if current_user.provider.present? %>
+        <%= image_tag(current_user.image) %>
+      <% else %>
+        <%= image_tag("pic1.jpg") %>
+      <% end %>
+        <h5><%= current_user.name %></h5>
+        <ul>
+          <li><%= link_to "View Profile", user_path(current_user) %></li>
+          <li><%= link_to "Edit Profile", "/users/edit" %></li>
+          <li><%= link_to "Sign out", destroy_user_session_path(), :method => :delete %></li>
+          <li class="sep">Joined: <%= time_ago_in_words(current_user.created_at) %> ago.</li>
+        </ul>
+    </div>
+  </div>
+</header>
+
+<section class="container_960 clearfix">
+  <div id="main_profile_box" class="box white">
+    <aside class="fleft mright">
+      <% if current_user.image.present? %>
+        <%= image_tag(current_user.image, :size => "160x160", :alt => "#{current_user.name}" ) %>
+      <% else %>
+        <%= image_tag("pic1.jpg", :size => "160x160", :alt => "Profile Image", :class => "profile_img_big" ) %>
+      <% end %>
+    </aside>
+    <article class="fleft">
+      <h1><%= current_user.name %></h1>
+      <h2><%= current_user.location %></h2>
+      <footer class="interact_user">
+        <a href="#" class="send_message">
+          <span class="icon-menu-message">Let's talk</span>
+          <span>Send Message</span>
+        </a>
+      </footer>
+    </article>
+    <aside class="user_info fright">
+      <h3>Instruments:</h3>
+      <p><%= current_user.instrument_1 %>, <%= current_user.instrument_2 %></p>
+      <h3>Music Preferences:</h3>
+      <p><%= current_user.music_preference_1 %>, <%= current_user.music_preference_2 %></p>
+    </aside>
+  </div>
+</section>
+
+<section class="container_960 clearfix">
+  <div class="one_third box white">
+    <h1 class="box_title">Song Rooms</h1>
+  </div>
+  <div class="one_third box white">
+    <h1 class="box_title">Songs</h1>
+  </div>
+  <div class="one_third box white last">
+    <h1 class="box_title">Tracks</h1>
+  </div>
+</section>
+
+  
+  <ul>
+  <li><%= link_to "New Song Upload", new_user_song_upload_path %></li>
+  </ul>
+</section>

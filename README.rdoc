@@ -32,3 +32,9 @@ Music Application
 Features/Implementations:
 1. Devise for user authentication -> https://github.com/plataformatec/devise
 (allowing user to login to our application and eventually through other services like facebook and twitter)
+
+
+
+
+Bugs:
+Registration Problem - Problem with registering through sign up form. -> Most likely issue with devise and logging in through facebook.

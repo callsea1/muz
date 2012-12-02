@@ -65,8 +65,8 @@ Music::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
   
-  ENV["FACEBOOK_APP_ID"] = "309085772520317"
-  ENV["FACEBOOK_APP_SECRET"] = "b85ee884f017194f293a7be1c7e439be"
+  ENV["FACEBOOK_APP_ID"] = "289946637789406"
+  ENV["FACEBOOK_APP_SECRET"] = "9b28be51a1ca8496ce9de3766559071d"
 
   ENV["37SIGNALS_CLIENT_ID"] = "c836c82b45ac3652a9f24fb615b721e94b6430e4"
   ENV["37SIGNALS_CLIENT_SECRET"] = "91ea07ec5d767859b8ea2477aa079429b0048688"

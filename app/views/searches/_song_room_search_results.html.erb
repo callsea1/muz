@@ -1,0 +1,14 @@
+<h2>Song Rooms</h2>
+<% unless @search_song_rooms.nil? %>
+  <table id="search" class="table table-bordered">
+    <tbody>
+    <% @search_song_rooms.each do |result_item| %>
+      <tr class="<%= cycle('odd', 'even') %>">
+        <td><%= link_to "#{result_item.title}", song_room_path(result_item) %></td>    
+      </tr>
+    <% end %>
+  </tbody>
+  </table>
+<% else %>
+<p>Nothing Found</p>
+<% end %>

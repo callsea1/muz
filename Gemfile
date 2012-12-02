@@ -22,6 +22,9 @@ end
 
 gem 'jquery-rails'
 
+#search
+gem 'tire'
+
 gem "paperclip", "~> 3.0"
 
 # To use ActiveModel has_secure_password
@@ -46,3 +49,5 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'oauth2'
 gem "omniauth-37signals", "~> 1.0.4"
+
+gem 'activerecord-reputation-system', require: 'reputation_system'

@@ -1,0 +1,5 @@
+<%= form_tag search_collaborators_path, method: :get, remote: true do %>
+  <%= text_field_tag :query, params[:query], :placeholder => "Search Collaborators", :class => "search"  %>
+  <%= hidden_field_tag :song_room_id, @song_room.id %>
+  <%= submit_tag "Submit", class: "dhide", remote: true  %>
+<% end %>

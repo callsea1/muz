@@ -1,5 +1,10 @@
-<h1>New song_room</h1>
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'song_room_new' %>
+  <%= javascript_include_tag 'jquery.placeholder.min' %>
+<% end %>
 
-<%= render 'form' %>
+<section class="main">
+  <%= link_to image_tag("logo_banner-azul.png", class: "logo-banner"), user_home_url() %>
 
-<%= link_to 'Back', song_rooms_path %>
+  <%= render 'form' %>
+</section>

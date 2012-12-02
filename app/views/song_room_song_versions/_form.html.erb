@@ -1,0 +1,7 @@
+<section>
+  <%= form_for(@comment) do |f| %>
+    <%= f.text_field :body %>
+    <%= f.hidden_field :song_room_song_version_id %>
+    <%= f.submit "Add Comment" %>
+  <% end %>
+</section>

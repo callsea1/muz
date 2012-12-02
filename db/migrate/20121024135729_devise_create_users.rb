@@ -39,11 +39,14 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :instrument_1
       t.string :instrument_2
       t.string :name
+      t.string :first_name
+      t.string :last_name
+      t.string :image
       t.string :location
       t.string :uid
       t.string :provider
       t.string :username
-      t.has_attached_file :avatar
+
 
       t.timestamps
     end

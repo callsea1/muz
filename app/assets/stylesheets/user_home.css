@@ -1,0 +1,29 @@
+body {
+  background: #55aba8 url(bg-square.png);
+}
+#header {
+  margin: 10px auto;
+  background: #f0f0f0;
+  border-radius: 6px;
+}
+#header_logo, #header_nav {
+  border-right: 1px solid #c0c0c0;
+}
+#header_nav {
+  font-size: .8em;
+}
+#header_nav h4 {
+  color: #c0c0c0;
+}
+#header_nav li a {
+  color: #a0a0a0;
+}
+.icon_pq {
+  font-size: .75em;
+  margin-right: 10px;
+  color: #b0b0b0;
+}
+
+#header_search .user {
+  position: absolute !important;
+}

@@ -1,0 +1,17 @@
+<h2>Users</h2>
+<% unless @search_users.nil? %>
+  <table id="search" class="table table-bordered">
+    <tbody>
+    <% @search_users.each do |result_item| %>
+      <tr class="<%= cycle('odd', 'even') %>">
+        <% if result_item.image.present? %>
+        <td><img src="<%= result_item.image %>"></td>
+        <% end %>
+        <td><%= link_to "#{result_item.name}", user_path(result_item) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  </table>
+<% else %>
+<p>Nothing Found</p>
+<% end %>

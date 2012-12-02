@@ -1,4 +1,5 @@
 class SongRoomsController < ApplicationController
+  before_filter :authenticate_user!
   # GET /song_rooms
   # GET /song_rooms.json
   def index
@@ -14,9 +15,16 @@ class SongRoomsController < ApplicationController
   # GET /song_rooms/1.json
   def show
     @song_room = SongRoom.find(params[:id])
-
+    #@song_room_song_versions = SongRoomSongVersion.find_with_reputation(:votes, :all, order: "votes desc")
+    @song_room_song_versions = @song_room.song_room_song_versions.all
+    @comments = @song_room_song_versions.first.comments
+    @song_room_song_version = SongRoomSongVersion.find_by_id(params[:id])
+    @collaborators = @song_room.collaborators.where(:accepted => true)
+    @new_song_room_song_version = @song_room.song_room_song_versions.build(params[:song_room_song_version])
+    @users = User.all
     respond_to do |format|
       format.html # show.html.erb
+      format.js {render :layout => false }
       format.json { render json: @song_room }
     end
   end
@@ -40,7 +48,7 @@ class SongRoomsController < ApplicationController
   # POST /song_rooms
   # POST /song_rooms.json
   def create
-    @song_room = SongRoom.new(params[:song_room])
+    @song_room = current_user.song_rooms.build(params[:song_room])
 
     respond_to do |format|
       if @song_room.save
@@ -78,6 +86,28 @@ class SongRoomsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to song_rooms_url }
       format.json { head :no_content }
+    end
+  end
+
+  def song_room_search_collaborators
+      @song_room = params[:song_room_id]
+      if params[:query].present?
+      @search_users_for_collaborations = User.search(params)
+      end
+      respond_to do |format|
+        format.html
+      format.js {render :layout => false }
+    end
+  end
+
+  def song_room_song_version_comments
+    @song_room_song_version = SongRoomSongVersion.find_by_id(params[:id])
+    @song_comments = @song_room_song_version.comments.all
+    @comment = Comment.new
+
+    respond_to do |format|
+      format.html
+      format.js {render :layout => false }
     end
   end
 end

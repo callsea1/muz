@@ -1,4 +1,5 @@
 class UserSongUploadsController < ApplicationController
+  before_filter :authenticate_user!
   # GET /user_song_uploads
   # GET /user_song_uploads.json
   def index
@@ -40,7 +41,7 @@ class UserSongUploadsController < ApplicationController
   # POST /user_song_uploads
   # POST /user_song_uploads.json
   def create
-    @user_song_upload = UserSongUpload.new(params[:user_song_upload])
+    @user_song_upload = current_user.user_song_uploads.build(params[:user_song_upload])
 
     respond_to do |format|
       if @user_song_upload.save
