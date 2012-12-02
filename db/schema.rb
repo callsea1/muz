@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121201210726) do
+ActiveRecord::Schema.define(:version => 20121202022410) do
 
   create_table "collaborators", :force => true do |t|
     t.integer  "user_id"
@@ -32,8 +32,9 @@ ActiveRecord::Schema.define(:version => 20121201210726) do
   create_table "messages", :force => true do |t|
     t.string   "content"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+    t.integer  "song_room_version_id"
   end
 
   create_table "rs_evaluations", :force => true do |t|
