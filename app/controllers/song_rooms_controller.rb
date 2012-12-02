@@ -53,7 +53,7 @@ class SongRoomsController < ApplicationController
   # POST /song_rooms.json
   def create
     @song_room = current_user.song_rooms.build(params[:song_room])
-
+    @song_room.collaborators.build(:user_id => @song_room.user_id)
     respond_to do |format|
       if @song_room.save
         format.html { redirect_to @song_room, notice: 'Song room was successfully created.' }

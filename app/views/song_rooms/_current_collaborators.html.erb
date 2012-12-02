@@ -1,5 +1,5 @@
 <li id="two" class="mail">
-  <a href="#two" class="a_header">Collaborators<span>4</span></a>
+  <a href="#two" class="a_header">Collaborators<span><%= @collaborators.count %></span></a>
   <ul class="sub-menu">
     <% @collaborators.each do |collaborator| %>
       <li>
