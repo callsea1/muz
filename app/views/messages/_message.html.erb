@@ -1,4 +1,5 @@
 <li>
+  <span class="created_by"><%= message.user.nil? ? "User" : message.user.email %></span>	
   <span class="created_at"><%= message.created_at.strftime("%l:%M:%P") %></span>
   <%= message.content %>
 </li>

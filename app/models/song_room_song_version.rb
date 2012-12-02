@@ -8,6 +8,7 @@ class SongRoomSongVersion < ActiveRecord::Base
   belongs_to :user
 
   has_many :comments
+  has_many :messages
 
   has_attached_file :song_version_upload
   

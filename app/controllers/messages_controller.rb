@@ -40,7 +40,7 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.json
   def create
-    @message = Message.create!(params[:message])
+    @message = Message.create!(params[:message].merge(:user_id => current_user.id))
 
   end
 

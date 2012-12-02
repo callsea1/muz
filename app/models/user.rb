@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   
+  has_many :messages
 
   has_many :evaluations, class_name: "RSEvaluation", as: :source
 

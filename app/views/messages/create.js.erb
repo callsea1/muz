@@ -1,4 +1,7 @@
 <% publish_to "/messages/new" do %>
-  $("#chat").append("<%= j render(@message) %>");
+  var newMessage = $(" <div> <%= j render(@message) %> </div>");
+  newMessage.hide();
+  $("#chat_message_list").append(newMessage);
+  newMessage.slideDown();
   $("#message_content").val('');
 <% end %>

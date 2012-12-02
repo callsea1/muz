@@ -14,6 +14,7 @@ class SongRoomsController < ApplicationController
   # GET /song_rooms/1
   # GET /song_rooms/1.json
   def show
+    @messages = Message.all
     @song_room = SongRoom.find(params[:id])
     #@song_room_song_versions = SongRoomSongVersion.find_with_reputation(:votes, :all, order: "votes desc")
     @song_room_song_versions = @song_room.song_room_song_versions.all
