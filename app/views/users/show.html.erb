@@ -35,7 +35,7 @@
   <div id="main_profile_box" class="box white">
     <aside class="fleft mright">
       <% if current_user.image.present? %>
-        <%= image_tag(current_user.image, :size => "160x160", :alt => "#{current_user.name}" ) %>
+        <%= image_tag("http://graph.facebook.com/#{current_user.uid}/picture?type=square&width=160&height=160") %>
       <% else %>
         <%= image_tag("pic1.jpg", :size => "160x160", :alt => "Profile Image", :class => "profile_img_big" ) %>
       <% end %>

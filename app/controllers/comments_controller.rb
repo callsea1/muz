@@ -41,7 +41,7 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @comment = current_user.comments.build(params[:comment])
-    @song_room_song_version = @comment.song_room_song_version
+    @comment.song_room_song_version_id = params[:song_room_song_version_id]
     respond_to do |format|
       if @comment.save
         format.html { redirect_to @song_room_song_version, notice: 'Comment was successfully created.' }
