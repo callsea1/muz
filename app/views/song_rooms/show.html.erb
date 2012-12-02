@@ -38,7 +38,7 @@
 <section class="app">
   <aside class="side">
     <!-- <a href="index.html" class="add" title="Upload a track"><i class="upload">Upload Track</i></a> -->
-    <%= form_for(@new_song_room_song_version) do |f| %>
+    <%= form_for(@new_version) do |f| %>
       <div class="add">
         <%= f.file_field :song_version_upload, onchange: "this.form.submit()" %>   
       </div>
@@ -48,7 +48,7 @@
     <% end %>
     
     <ul class="tabs">
-      <% @song_room_song_versions.each do |song| %>
+      <% @versions.each do |song| %>
 				<li>
           <%= link_to song_comments_path(song), remote: :true do %>
   				<div class="a">
@@ -90,7 +90,7 @@
   </aside>
 
     
-    <%#= render 'song_room_song_versions' %>
+    <%#= render 'versions' %>
 
 <section class="main main_open" id="chat">
 
@@ -133,7 +133,7 @@
 $(document).ready(function(){
   
   // PLAYER LOOP //
-  <% @song_room_song_versions.each do |song| %>
+  <% @versions.each do |song| %>
   	$("#jquery_jplayer_<%= song.id%>").jPlayer({
   		ready: function () {
   			$(this).jPlayer("setMedia", {

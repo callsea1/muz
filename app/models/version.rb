@@ -1,4 +1,4 @@
-class SongRoomSongVersion < ActiveRecord::Base
+class Version < ActiveRecord::Base
   attr_accessible :song_room_id, :user_id, :song_version_upload
 
   validates :song_version_upload, :attachment_presence => true
@@ -7,7 +7,6 @@ class SongRoomSongVersion < ActiveRecord::Base
   belongs_to :song_room
   belongs_to :user
 
-  has_many :comments
   has_many :messages
 
   has_attached_file :song_version_upload
