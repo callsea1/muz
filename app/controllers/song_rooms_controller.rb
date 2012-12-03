@@ -18,7 +18,8 @@ class SongRoomsController < ApplicationController
     @song_room = SongRoom.find(params[:id])
     #@versions = Version.find_with_reputation(:votes, :all, order: "votes desc")
     @versions = @song_room.versions.all
-    @version = Version.find_by_id(params[:id])
+    #@version = @song_room.versions.first
+    #@message = @version.messages
     @collaborators = @song_room.collaborators.where(:accepted => true)
     @new_version = @song_room.versions.build(params[:version])
 

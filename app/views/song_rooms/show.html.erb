@@ -48,16 +48,16 @@
     <% end %>
     
     <ul class="tabs">
-      <% @versions.each do |song| %>
+      <% @versions.each do |version| %>
 				<li>
-          <%= link_to song_comments_path(song), remote: :true do %>
+          <%= link_to version_messages_path(:version_id => version.id), remote: :true do %>
   				<div class="a">
-  				  <div id="jquery_jplayer_<%= song.id%>" class="jp-jplayer"></div>
-            <div id="jp_container_<%= song.id%>" class="jp-audio">
+  				  <div id="jquery_jplayer_<%= version.id%>" class="jp-jplayer"></div>
+            <div id="jp_container_<%= version.id%>" class="jp-audio">
         			<div class="jp-type-single">
         			 <div class="jp-title">
         					<ul>
-        						<li><strong><%= song.user.name %>: </strong> v.<%= song.id %></li>
+        						<li><strong><%= version.user.name %>: </strong> v.<%= version.id %></li>
         					</ul>
         				</div>
         				<div class="jp-gui jp-interface">
@@ -81,7 +81,7 @@
         				</div>
         			</div>
         		</div>
-        		<%= link_to "Download", download_path(song), :class => "jp-download" %> 
+        		<%= link_to "Download", download_path(version), :class => "jp-download" %> 
   				</div>
           <% end %>
 				</li>
@@ -94,7 +94,7 @@
 
 <section class="main main_open" id="chat">
 
-<%= render 'messages/index' %>
+<%#= render 'messages/index' %>
 
   </section>
   
@@ -133,11 +133,11 @@
 $(document).ready(function(){
   
   // PLAYER LOOP //
-  <% @versions.each do |song| %>
-  	$("#jquery_jplayer_<%= song.id%>").jPlayer({
+  <% @versions.each do |version| %>
+  	$("#jquery_jplayer_<%= version.id%>").jPlayer({
   		ready: function () {
   			$(this).jPlayer("setMedia", {
-  				mp3: "<%= song.song_version_upload.url %>"
+  				mp3: "<%= version.song_version_upload.url %>"
   			});
   		},
   		play: function() { // To avoid both jPlayers playing together.
@@ -145,7 +145,7 @@ $(document).ready(function(){
   		},
   		swfPath: "js",
   		supplied: "mp3",
-  		cssSelectorAncestor: "#jp_container_<%= song.id%>"
+  		cssSelectorAncestor: "#jp_container_<%= version.id%>"
   	});
   <% end %>
   
