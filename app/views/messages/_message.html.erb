@@ -1,5 +1,10 @@
 <li>
-  <span class="created_by"><%= message.user.nil? ? "User" : message.user.email %></span>	
-  <span class="created_at"><%#= message.created_at.to_s(:short) %></span>
+  <span class="created_by"><%= message.user.nil? ? "User" : message.user.name %></span>	
+	  <% if current_user.image.present? %>
+	      <%= image_tag(current_user.image) %>
+	    <% else %>
+	      <%= image_tag 'avatar.png' %>
+	    <% end %>
+  <span class="created_at"><%= message.created_at %></span>
   <%= message.content %>
 </li>

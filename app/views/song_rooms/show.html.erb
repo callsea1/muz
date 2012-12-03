@@ -10,11 +10,11 @@
     <p class="room_tags"><%= @song_room.description %></p>
   </div>
   <div class="user">
-    <% if current_user.provider.present? %>
-      <%= image_tag(current_user.image) %>
-    <% else %>
-      <%= image_tag "avatar.png" %>
-    <% end %>
+    <% if current_user.image.present? %>
+        <%= image_tag(current_user.image) %>
+      <% else %>
+        <%= image_tag 'avatar.png' %>
+      <% end %>
       <h5><%= current_user.name %></h5>
       <ul>
         <li><%= link_to "View Profile", user_path(current_user) %></li>
