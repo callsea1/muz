@@ -3,7 +3,7 @@ Music::Application.routes.draw do
 
 
 
-  get('/song_room_search_collaborators', { :controller => "SongRooms", :action => 'song_room_search_collaborators', :as => 'search_collaborators'})
+  get('/search_collaborators', { :controller => "SongRooms", :action => 'search_collaborators', :as => 'search_collaborators'})
 
   resources :searches
 

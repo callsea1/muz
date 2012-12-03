@@ -1,9 +1,10 @@
 <% @search_users_for_collaborations.each do |user| %>
+<% unless user = current_user %>
   <li>
     <a href="#">
       <em>
       <% if user.image.present? %>
-        <%= image_tag(user.image) %>
+        <%= image_tag(user.image(:thumb), :height => '32px', :width => '32px') %>
       <% else %>
         <%= image_tag "avatar.png" %>
       <% end %>
@@ -15,4 +16,5 @@
       <%= link_to 'Add Collaborator', create_collaborator_path(:user_id => user.id, :song_room_id => @song_room), :method => 'post', :class => "bt_add" %>
     </div>
   </li>
+  <% end %>
 <% end %>
