@@ -21,10 +21,17 @@ ActiveRecord::Schema.define(:version => 20121202055842) do
     t.boolean  "accepted",     :default => true
   end
 
+  create_table "comments", :force => true do |t|
+    t.integer  "song_room_song_version_id"
+    t.string   "body"
+    t.integer  "user_id"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
   create_table "messages", :force => true do |t|
     t.string   "content"
     t.integer  "user_id"
-    t.integer  "version_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
