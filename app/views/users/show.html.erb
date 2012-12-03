@@ -15,7 +15,7 @@
         <li><a href="#" class="mleft icon-menu-search">Search</a></li>
     </nav>
     <div class="user">
-      <% if current_user.provider.present? %>
+      <% if current_user.image.present? %>
         <%= image_tag(current_user.image) %>
       <% else %>
         <%= image_tag("pic1.jpg") %>
