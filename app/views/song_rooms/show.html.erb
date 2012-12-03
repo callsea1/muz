@@ -19,7 +19,7 @@
       <ul>
         <li><%= link_to "View Profile", user_path(current_user) %></li>
         <li><%= link_to "Edit Profile", "/users/edit" %></li>
-        <li><%= link_to "Sign out", destroy_user_session_path(), :method => :delete %></li>
+        <li><%= link_to "Sign out", logout_path, :method => :delete %></li>
         <li class="sep">Joined: <%= time_ago_in_words(current_user.created_at) %> ago.</li>
       </ul>
   </div>

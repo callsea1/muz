@@ -63,7 +63,7 @@ Music::Application.routes.draw do
 		get "/edit/account" , to: "devise/registrations#edit" , :as => "edit_account"
 		
 		get "/login" , to: "devise/sessions#new" , :as => "login"
-		get "/logout" , to: "devise/sessions#destroy" , :as => "logout"
+		delete "/logout" , to: "devise/sessions#destroy" , :as => "logout"
 	end
 	
 	authenticated :user do
