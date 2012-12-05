@@ -64,12 +64,21 @@
 <section class="container_960 clearfix">
   <div class="one_third box white">
     <h1 class="box_title">Song Rooms</h1>
+    <% @song_rooms.each do |song_room| %>
+        <%= song_room.title %>
+    <% end %>
   </div>
   <div class="one_third box white">
     <h1 class="box_title">Songs</h1>
+    <% @user_song_uploads.each do |user_song_upload| %>
+      <%= user_song_upload.song_file_name %>
+    <% end %>
   </div>
   <div class="one_third box white last">
     <h1 class="box_title">Tracks</h1>
+    <% @versions.each do |version| %>
+      <%= version.song_version_upload_file_name %>
+    <% end %>
   </div>
 </section>
 
