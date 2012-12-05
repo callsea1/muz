@@ -50,7 +50,7 @@
     <ul class="tabs">
       <% @song_room_song_versions.each do |song| %>
 				<li>
-          <%= link_to song_comments_path(song), remote: :true do %>
+          <%= link_to messages_path(song), remote: :true do %>
   				<div class="a">
   				  <div id="jquery_jplayer_<%= song.id%>" class="jp-jplayer"></div>
             <div id="jp_container_<%= song.id%>" class="jp-audio">
