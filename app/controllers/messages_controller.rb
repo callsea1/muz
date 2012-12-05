@@ -2,9 +2,12 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
-    @messages = Message.all
-
+    @version = Version.find_by_id(params[:version_id])
+    @messages = @version.messages.all
+    @message = Message.new
+    
     respond_to do |format|
+      format.js { render :layout => false }
       format.html # index.html.erb
       format.json { render json: @messages }
     end
@@ -40,8 +43,9 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.json
   def create
-    @message = Message.create!(params[:message].merge(:user_id => current_user.id))
-
+    @version = Version.find_by_id(params[:version_id])
+    @message = @version.messages.build(params[:message].merge(:user_id => current_user.id))
+    @message.save!
   end
 
   # PUT /messages/1

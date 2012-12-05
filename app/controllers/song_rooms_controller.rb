@@ -16,13 +16,12 @@ class SongRoomsController < ApplicationController
   def show
     @messages = Message.all
     @song_room = SongRoom.find(params[:id])
-    #@song_room_song_versions = SongRoomSongVersion.find_with_reputation(:votes, :all, order: "votes desc")
-    @song_room_song_versions = @song_room.song_room_song_versions.all
-    @song_room_song_version = SongRoomSongVersion.find_by_id(params[:id])
-    @comments = Comment.all
-    @comment = Comment.new
+    #@versions = Version.find_with_reputation(:votes, :all, order: "votes desc")
+    @versions = @song_room.versions.all
+    #@version = @song_room.versions.first
+    #@message = @version.messages
     @collaborators = @song_room.collaborators.where(:accepted => true)
-    @new_song_room_song_version = @song_room.song_room_song_versions.build(params[:song_room_song_version])
+    @new_version = @song_room.versions.build(params[:version])
 
     @users = User.all
 
@@ -53,7 +52,7 @@ class SongRoomsController < ApplicationController
   # POST /song_rooms.json
   def create
     @song_room = current_user.song_rooms.build(params[:song_room])
-
+    @song_room.collaborators.build(:user_id => @song_room.user_id)
     respond_to do |format|
       if @song_room.save
         format.html { redirect_to @song_room, notice: 'Song room was successfully created.' }
@@ -93,7 +92,7 @@ class SongRoomsController < ApplicationController
     end
   end
 
-  def song_room_search_collaborators
+  def search_collaborators
       @song_room = params[:song_room_id]
       if params[:query].present?
       @search_users_for_collaborations = User.search(params)
@@ -101,16 +100,6 @@ class SongRoomsController < ApplicationController
       respond_to do |format|
         format.html
       format.js {render :layout => false }
-    end
-  end
-
-  def song_room_song_version_comments
-    @song_room_song_version = SongRoomSongVersion.find_by_id(params[:id])
-    @song_comments = @song_room_song_version.comments
-    @comment = @song_room_song_version.comments.build(params[:comment])
-
-    respond_to do |format|
-      format.js { render :layout => false }
     end
   end
 end

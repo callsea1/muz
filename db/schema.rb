@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121202022410) do
+ActiveRecord::Schema.define(:version => 20121202055842) do
 
   create_table "collaborators", :force => true do |t|
     t.integer  "user_id"
@@ -81,17 +81,6 @@ ActiveRecord::Schema.define(:version => 20121202022410) do
   add_index "rs_reputations", ["reputation_name"], :name => "index_rs_reputations_on_reputation_name"
   add_index "rs_reputations", ["target_id", "target_type"], :name => "index_rs_reputations_on_target_id_and_target_type"
 
-  create_table "song_room_song_versions", :force => true do |t|
-    t.integer  "song_room_id"
-    t.integer  "user_id"
-    t.string   "song_version_upload_file_name"
-    t.string   "song_version_upload_content_type"
-    t.integer  "song_version_upload_file_size"
-    t.datetime "song_version_upload_updated_at"
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
-  end
-
   create_table "song_rooms", :force => true do |t|
     t.integer  "user_id"
     t.string   "title"
@@ -142,5 +131,16 @@ ActiveRecord::Schema.define(:version => 20121202022410) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "versions", :force => true do |t|
+    t.integer  "song_room_id"
+    t.integer  "user_id"
+    t.string   "song_version_upload_file_name"
+    t.string   "song_version_upload_content_type"
+    t.integer  "song_version_upload_file_size"
+    t.datetime "song_version_upload_updated_at"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+  end
 
 end

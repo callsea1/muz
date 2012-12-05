@@ -10,16 +10,16 @@
     <p class="room_tags"><%= @song_room.description %></p>
   </div>
   <div class="user">
-    <% if current_user.provider.present? %>
-      <%= image_tag(current_user.image) %>
-    <% else %>
-      <%= image_tag "avatar.png" %>
-    <% end %>
+    <% if current_user.image.present? %>
+        <%= image_tag(current_user.image) %>
+      <% else %>
+        <%= image_tag 'avatar.png' %>
+      <% end %>
       <h5><%= current_user.name %></h5>
       <ul>
         <li><%= link_to "View Profile", user_path(current_user) %></li>
         <li><%= link_to "Edit Profile", "/users/edit" %></li>
-        <li><%= link_to "Sign out", destroy_user_session_path(), :method => :delete %></li>
+        <li><%= link_to "Sign out", logout_path, :method => :delete %></li>
         <li class="sep">Joined: <%= time_ago_in_words(current_user.created_at) %> ago.</li>
       </ul>
   </div>
@@ -38,7 +38,7 @@
 <section class="app">
   <aside class="side">
     <!-- <a href="index.html" class="add" title="Upload a track"><i class="upload">Upload Track</i></a> -->
-    <%= form_for(@new_song_room_song_version) do |f| %>
+    <%= form_for(@new_version) do |f| %>
       <div class="add">
         <%= f.file_field :song_version_upload, onchange: "this.form.submit()" %>   
       </div>
@@ -48,16 +48,16 @@
     <% end %>
     
     <ul class="tabs">
-      <% @song_room_song_versions.each do |song| %>
+      <% @versions.each do |version| %>
 				<li>
-          <%= link_to messages_path(song), remote: :true do %>
+          <%= link_to version_messages_path(:version_id => version.id), remote: :true do %>
   				<div class="a">
-  				  <div id="jquery_jplayer_<%= song.id%>" class="jp-jplayer"></div>
-            <div id="jp_container_<%= song.id%>" class="jp-audio">
+  				  <div id="jquery_jplayer_<%= version.id%>" class="jp-jplayer"></div>
+            <div id="jp_container_<%= version.id%>" class="jp-audio">
         			<div class="jp-type-single">
         			 <div class="jp-title">
         					<ul>
-        						<li><strong><%= song.user.name %>: </strong> v.<%= song.id %></li>
+        						<li><strong><%= version.user.name %>: </strong> v.<%= version.id %></li>
         					</ul>
         				</div>
         				<div class="jp-gui jp-interface">
@@ -81,7 +81,7 @@
         				</div>
         			</div>
         		</div>
-        		<%= link_to "Download", download_path(song), :class => "jp-download" %> 
+        		<%= link_to "Download", download_path(version), :class => "jp-download" %> 
   				</div>
           <% end %>
 				</li>
@@ -90,11 +90,11 @@
   </aside>
 
     
-    <%#= render 'song_room_song_versions' %>
+    <%#= render 'versions' %>
 
 <section class="main main_open" id="chat">
 
-<%= render 'messages/index' %>
+<%#= render 'messages/index' %>
 
   </section>
   
@@ -133,11 +133,11 @@
 $(document).ready(function(){
   
   // PLAYER LOOP //
-  <% @song_room_song_versions.each do |song| %>
-  	$("#jquery_jplayer_<%= song.id%>").jPlayer({
+  <% @versions.each do |version| %>
+  	$("#jquery_jplayer_<%= version.id%>").jPlayer({
   		ready: function () {
   			$(this).jPlayer("setMedia", {
-  				mp3: "<%= song.song_version_upload.url %>"
+  				mp3: "<%= version.song_version_upload.url %>"
   			});
   		},
   		play: function() { // To avoid both jPlayers playing together.
@@ -145,7 +145,7 @@ $(document).ready(function(){
   		},
   		swfPath: "js",
   		supplied: "mp3",
-  		cssSelectorAncestor: "#jp_container_<%= song.id%>"
+  		cssSelectorAncestor: "#jp_container_<%= version.id%>"
   	});
   <% end %>
   

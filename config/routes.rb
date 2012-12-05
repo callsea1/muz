@@ -1,20 +1,18 @@
 Music::Application.routes.draw do
 
 
-  resources :messages
 
-  get('/song_room_song_version_comments/:id', {:controller => "SongRooms", :action => 'song_room_song_version_comments', :as => 'song_comments'})
 
-  get('/song_room_search_collaborators', { :controller => "SongRooms", :action => 'song_room_search_collaborators', :as => 'search_collaborators'})
+  get('/search_collaborators', { :controller => "SongRooms", :action => 'search_collaborators', :as => 'search_collaborators'})
 
   resources :searches
 
-  match 'download/:id' =>  'song_room_song_versions#download', :as => :download
+  match 'download/:id' =>  'versions#download', :as => :download
 
 
 
-  resources :song_room_song_versions do 
-    resources :comments
+  resources :versions do 
+    resources :messages
     member { post :vote}
   end
   
@@ -65,7 +63,7 @@ Music::Application.routes.draw do
 		get "/edit/account" , to: "devise/registrations#edit" , :as => "edit_account"
 		
 		get "/login" , to: "devise/sessions#new" , :as => "login"
-		get "/logout" , to: "devise/sessions#destroy" , :as => "logout"
+		delete "/logout" , to: "devise/sessions#destroy" , :as => "logout"
 	end
 	
 	authenticated :user do

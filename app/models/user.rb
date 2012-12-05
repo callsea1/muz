@@ -20,12 +20,12 @@ class User < ActiveRecord::Base
 
   has_many :collaborators
 
-  has_many :song_room_song_versions
+  has_many :versions
 
-  has_reputation :votes, source: {reputation: :votes, of: :song_room_song_versions }, aggregated_by: :sum
+  has_reputation :votes, source: {reputation: :votes, of: :versions }, aggregated_by: :sum
 
-  def voted_for?(song_room_song_version)
-    evaluations.where(target_type: song_room_song_version.class, target_id: song_room_song_version.id).present?
+  def voted_for?(version)
+    evaluations.where(target_type: version.class, target_id: version.id).present?
   end
 
 

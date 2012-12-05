@@ -1,4 +1,4 @@
-<% publish_to "/messages/new" do %>
+<% publish_to "/versions/#{@version.id}/messages/new" do %>
   var newMessage = $(" <div> <%= j render(@message) %> </div>");
   newMessage.hide();
   $("#chat_message_list").append(newMessage);

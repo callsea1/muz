@@ -15,17 +15,19 @@
         <li><a href="#" class="mleft icon-menu-search">Search</a></li>
     </nav>
     <div class="user">
-      <% if current_user.provider.present? %>
-        <%= image_tag(current_user.image) %>
+      <% if @user.image.present? %>
+        <%= image_tag(@user.image) %>
       <% else %>
         <%= image_tag("pic1.jpg") %>
       <% end %>
-        <h5><%= current_user.name %></h5>
+        <h5><%= @user.name %></h5>
         <ul>
-          <li><%= link_to "View Profile", user_path(current_user) %></li>
+          <li><%= link_to "View Profile", user_path(@user) %></li>
+        <% if current_user == @user %>
           <li><%= link_to "Edit Profile", "/users/edit" %></li>
-          <li><%= link_to "Sign out", destroy_user_session_path(), :method => :delete %></li>
-          <li class="sep">Joined: <%= time_ago_in_words(current_user.created_at) %> ago.</li>
+        <% end %>
+          <li><%= link_to "Sign out", logout_path, :method => :delete %></li>
+          <li class="sep">Joined: <%= time_ago_in_words(@user.created_at) %> ago.</li>
         </ul>
     </div>
   </div>
@@ -34,15 +36,15 @@
 <section class="container_960 clearfix">
   <div id="main_profile_box" class="box white">
     <aside class="fleft mright">
-      <% if current_user.image.present? %>
-        <%= image_tag("http://graph.facebook.com/#{current_user.uid}/picture?type=square&width=160&height=160") %>
+      <% if @user.image.present? %>
+        <%= image_tag("http://graph.facebook.com/#{@user.uid}/picture?type=square&width=160&height=160") %>
       <% else %>
         <%= image_tag("pic1.jpg", :size => "160x160", :alt => "Profile Image", :class => "profile_img_big" ) %>
       <% end %>
     </aside>
     <article class="fleft">
-      <h1><%= current_user.name %></h1>
-      <h2><%= current_user.location %></h2>
+      <h1><%= @user.name %></h1>
+      <h2><%= @user.location %></h2>
       <footer class="interact_user">
         <a href="#" class="send_message">
           <span class="icon-menu-message">Let's talk</span>
@@ -52,9 +54,9 @@
     </article>
     <aside class="user_info fright">
       <h3>Instruments:</h3>
-      <p><%= current_user.instrument_1 %>, <%= current_user.instrument_2 %></p>
+      <p><%= @user.instrument_1 %>, <%= @user.instrument_2 %></p>
       <h3>Music Preferences:</h3>
-      <p><%= current_user.music_preference_1 %>, <%= current_user.music_preference_2 %></p>
+      <p><%= @user.music_preference_1 %>, <%= @user.music_preference_2 %></p>
     </aside>
   </div>
 </section>
@@ -62,12 +64,21 @@
 <section class="container_960 clearfix">
   <div class="one_third box white">
     <h1 class="box_title">Song Rooms</h1>
+    <% @song_rooms.each do |song_room| %>
+        <%= song_room.title %>
+    <% end %>
   </div>
   <div class="one_third box white">
     <h1 class="box_title">Songs</h1>
+    <% @user_song_uploads.each do |user_song_upload| %>
+      <%= user_song_upload.song_file_name %>
+    <% end %>
   </div>
   <div class="one_third box white last">
     <h1 class="box_title">Tracks</h1>
+    <% @versions.each do |version| %>
+      <%= version.song_version_upload_file_name %>
+    <% end %>
   </div>
 </section>
 

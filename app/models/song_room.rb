@@ -5,7 +5,7 @@ class SongRoom < ActiveRecord::Base
 
   has_many :collaborators
 
-  has_many :song_room_song_versions
+  has_many :versions
 
   include Tire::Model::Search
   include Tire::Model::Callbacks

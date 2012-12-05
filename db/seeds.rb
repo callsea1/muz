@@ -9,10 +9,11 @@
 
 
 
-users = ['test.1@gmail.com', 'test.2@gmail.com'].map do |email|
+users = ['test.1@gmail.com', 'test.2@gmail.com', 'test.3@gmail.com', 'test.4@gmail.com'].map do |email|
 	User.create({:email => email, :password => 'hockey', :password_confirmation => 'hockey'})
 end
 
 song_rooms = users.each_with_index do |user, index|
 	SongRoom.create(:user_id => user.id, :title => "TestRoom #{index+1}")
 end
+
