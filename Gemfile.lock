@@ -194,7 +194,7 @@ DEPENDENCIES
   omniauth-37signals (~> 1.0.4)
   omniauth-facebook
   paperclip (~> 3.0)
-  private_pub
+  private_pub (~> 1.0.3)
   rails (= 3.2.8)
   sass-rails (~> 3.2.3)
   sqlite3
